@@ -1,0 +1,229 @@
+---
+const hero = {
+	phone: '+51929057970',
+	email: 'construveli.sac@gmail.com',
+};
+---
+
+<section class="hero" id="hero">
+	<svg class="hero-survey" viewBox="0 0 620 460" fill="none" aria-hidden="true">
+		<!-- Cuadrícula de replanteo -->
+		<defs>
+			<pattern id="surveyGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+				<path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--grid)" stroke-width="0.5" />
+			</pattern>
+			<pattern id="surveyGridMajor" width="100" height="100" patternUnits="userSpaceOnUse">
+				<path d="M 100 0 L 0 0 0 100" fill="none" stroke="var(--grid-strong)" stroke-width="0.7" />
+			</pattern>
+		</defs>
+		<rect width="620" height="460" fill="url(#surveyGrid)" rx="3" />
+		<rect width="620" height="460" fill="url(#surveyGridMajor)" rx="3" />
+
+		<!-- Curvas de nivel -->
+		<path class="contour contour-1" d="M30 380 C90 360, 140 330, 200 310 S310 280, 380 260 S470 230, 540 200 S600 170, 620 150" stroke="var(--ink-3)" stroke-width="1" fill="none" stroke-dasharray="4 2" />
+		<path class="contour contour-2" d="M10 320 C60 290, 120 270, 180 250 S270 220, 350 200 S440 170, 510 150 S580 120, 620 100" stroke="var(--ink-3)" stroke-width="1" fill="none" stroke-dasharray="4 2" />
+		<path class="contour contour-3" d="M0 260 C50 230, 110 210, 170 190 S260 160, 340 140 S430 110, 500 90 S570 60, 620 40" stroke="var(--ink-2)" stroke-width="1.2" fill="none" />
+		<path class="contour contour-4" d="M60 420 C100 400, 150 380, 220 360 S310 330, 390 310 S480 280, 550 260" stroke="var(--line)" stroke-width="0.8" fill="none" stroke-dasharray="2 3" />
+		<path class="contour contour-5" d="M0 200 C40 175, 90 155, 150 135 S230 105, 310 85 S400 55, 480 35" stroke="var(--ink-3)" stroke-width="0.8" fill="none" stroke-dasharray="4 2" />
+
+		<!-- Estaciones fijas -->
+		<g fill="var(--ink)">
+			<circle cx="150" cy="250" r="3.5" />
+			<circle cx="350" cy="180" r="3.5" />
+			<circle cx="480" cy="120" r="3.5" />
+			<circle cx="250" cy="310" r="3.5" />
+			<circle cx="420" cy="230" r="3.5" />
+		</g>
+		<g class="stations" font-family="var(--font-mono)" font-size="9" fill="var(--ink-3)">
+			<text x="158" y="248">E-01</text>
+			<text x="358" y="178">E-02</text>
+			<text x="488" y="118">E-03</text>
+			<text x="258" y="308">E-04</text>
+			<text x="428" y="228">E-05</text>
+		</g>
+
+		<!-- Norte -->
+		<g transform="translate(545, 360)">
+			<circle r="22" fill="var(--sheet)" stroke="var(--ink)" stroke-width="1" />
+			<line y1="-14" y2="10" stroke="var(--ink)" stroke-width="1.5" />
+			<polygon points="-5,10 5,10 0,18" fill="var(--ink)" />
+			<text x="0" y="-17" text-anchor="middle" font-family="var(--font-mono)" font-weight="700" font-size="9" fill="var(--ink)">N</text>
+		</g>
+
+		<!-- Escala -->
+		<g transform="translate(20, 430)" font-family="var(--font-mono)" font-size="8" fill="var(--ink-3)">
+			<line x1="0" y1="0" x2="120" y2="0" stroke="var(--ink)" stroke-width="1" />
+			<line x1="0" y1="-4" x2="0" y2="4" stroke="var(--ink)" stroke-width="1" />
+			<line x1="60" y1="-4" x2="60" y2="4" stroke="var(--ink)" stroke-width="1" />
+			<line x1="120" y1="-4" x2="120" y2="4" stroke="var(--ink)" stroke-width="1" />
+			<text x="0" y="14">0</text>
+			<text x="60" y="14" text-anchor="middle">50 m</text>
+			<text x="120" y="14" text-anchor="end">100 m</text>
+		</g>
+
+		<!-- Coordenadas UTM -->
+		<g font-family="var(--font-mono)" font-size="8" fill="var(--ink-3)" class="utm-ticks">
+			<text x="20" y="452">8 676 432 N</text>
+			<text x="520" y="452">8 676 350 N</text>
+			<text x="20" y="15">277 165 E</text>
+			<text x="535" y="15">277 275 E</text>
+		</g>
+
+		<!-- Borde de lámina -->
+		<rect x="2" y="2" width="616" height="456" rx="3" stroke="var(--ink)" stroke-width="1.5" fill="none" />
+	</svg>
+
+	<div class="hero-content">
+		<span class="tag">PLANO Nº CS-01 / LIMA, PERÚ</span>
+		<h1 class="hero-title">
+			Planos de obra,<br />
+			firmados y<br />
+			<strong>aprobados</strong>.
+		</h1>
+		<p class="hero-sub">
+			Del cálculo estructural a la licencia de construcción. Equipo colegiado
+			completo, gestión integral y energía sostenible para tu proyecto.
+		</p>
+		<div class="hero-ctas">
+			<a href={`mailto:${hero.email}?subject=Solicitud de planos`} class="cta-primary">
+				Solicitar planos
+			</a>
+			<a href="#servicios" class="cta-secondary">Ver servicios</a>
+		</div>
+	</div>
+
+	<!-- Regla de coordenadas reactiva -->
+	<div class="coord-readout" id="coordReadout">
+		<span>E&nbsp;277&nbsp;165</span><span>N&nbsp;8&nbsp;676&nbsp;432</span>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 100svh;
+		display: grid;
+		place-items: center;
+		padding: clamp(5rem, 12vw, 8rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 6vw, 4rem);
+		overflow: hidden;
+	}
+
+	.hero-survey {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.28;
+		pointer-events: none;
+	}
+
+	.hero-content {
+		position: relative;
+		max-width: 42rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: clamp(1rem, 2.5vw, 1.6rem);
+	}
+
+	.hero-title {
+		font-stretch: 118%;
+		font-weight: 500;
+		font-size: clamp(2.6rem, 7vw, 5.2rem);
+		line-height: 0.98;
+		letter-spacing: -0.035em;
+		color: var(--ink);
+	}
+
+	.hero-title strong {
+		font-weight: 900;
+		color: var(--green-deep);
+	}
+
+	.hero-sub {
+		max-width: 34rem;
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
+		line-height: 1.55;
+		color: var(--ink-2);
+	}
+
+	.hero-ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 0.4rem;
+	}
+
+	.cta-primary {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.85rem 2rem;
+		background: var(--green);
+		color: var(--sheet);
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background 200ms var(--ease-out-expo), transform 120ms var(--ease-out-expo);
+	}
+
+	.cta-primary:hover {
+		background: var(--green-deep);
+		transform: translateY(-1px);
+	}
+
+	.cta-secondary {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.85rem 2rem;
+		border: 1px solid var(--ink);
+		background: transparent;
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo);
+	}
+
+	.cta-secondary:hover {
+		background: var(--ink);
+		color: var(--sheet);
+	}
+
+	.coord-readout {
+		position: absolute;
+		bottom: clamp(1rem, 3vw, 2rem);
+		right: clamp(1rem, 3vw, 2.5rem);
+		display: flex;
+		gap: 1.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		color: var(--ink-3);
+		opacity: 0.7;
+		pointer-events: none;
+	}
+
+	@media (max-width: 54rem) {
+		.hero {
+			min-height: auto;
+			padding-top: clamp(4rem, 15vw, 7rem);
+			padding-bottom: clamp(3rem, 8vw, 5rem);
+		}
+
+		.hero-survey {
+			opacity: 0.15;
+			height: 120%;
+			top: -10%;
+		}
+
+		.coord-readout {
+			display: none;
+		}
+	}
+</style>

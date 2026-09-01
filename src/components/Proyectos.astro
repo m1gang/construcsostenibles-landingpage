@@ -1,0 +1,140 @@
+---
+const projects = [
+	{ id: '01', title: 'Obra residencial multifamiliar', type: 'Planos sismorresistentes + licencia' },
+	{ id: '02', title: 'Local comercial – Saneamiento legal', type: 'Declaratoria de fábrica SUNARP' },
+	{ id: '03', title: 'Vivienda unifamiliar sostenible', type: 'Domótica + paneles solares' },
+	{ id: '04', title: 'Oficina corporativa', type: 'ITSE + Defensa Civil' },
+];
+---
+
+<section class="proyectos" id="proyectos">
+	<div class="container">
+		<div class="rule-label">
+			<span class="tag">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="14" height="14" stroke="currentColor" stroke-width="1.2" /><rect x="4" y="4" width="8" height="8" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 2" /></svg>
+				LÁMINAS DE OBRA
+			</span>
+		</div>
+
+		<div class="plates">
+			{projects.map((p) => (
+				<article class="plate">
+					<div class="plate-visual">
+						<svg viewBox="0 0 400 280" fill="none" aria-hidden="true" class="plate-svg">
+							<defs>
+								<pattern id={`pg-${p.id}`} width="16" height="16" patternUnits="userSpaceOnUse">
+									<path d="M 16 0 L 0 0 0 16" fill="none" stroke="var(--grid)" stroke-width="0.4" />
+								</pattern>
+							</defs>
+							<rect width="400" height="280" fill="url(#pg-${p.id})" />
+							<!-- Elevación abstracta -->
+							<rect x="100" y="120" width="200" height="140" fill="none" stroke="var(--line)" stroke-width="1" />
+							<rect x="130" y="150" width="50" height="70" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
+							<rect x="220" y="150" width="50" height="70" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
+							<line x1="100" y1="120" x2="200" y2="80" stroke="var(--ink-3)" stroke-width="0.8" />
+							<line x1="200" y1="80" x2="300" y2="120" stroke="var(--ink-3)" stroke-width="0.8" />
+							<!-- Marca de agua -->
+							<text x="200" y="145" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="var(--ink-3)" opacity="0.5" transform="rotate(-15 200 145)">
+								ESPACIO RESERVADO
+							</text>
+						</svg>
+						<span class="plate-tag tag">LÁMINA Nº {p.id}</span>
+					</div>
+					<div class="plate-info">
+						<strong>{p.title}</strong>
+						<span class="plate-type">{p.type}</span>
+						<span class="plate-note tag">Fotografía de obra — por incorporar</span>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.proyectos {
+		padding: clamp(3rem, 8vw, 6rem) 0;
+		background: var(--sheet);
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.container {
+		max-width: 76rem;
+		margin: 0 auto;
+		padding: 0 clamp(1rem, 4vw, 2.5rem);
+	}
+
+	.plates {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: clamp(1rem, 2vw, 1.5rem);
+	}
+
+	.plate {
+		border: 1px solid var(--line);
+		background: var(--paper);
+		transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+	}
+
+	.plate:hover {
+		border-color: var(--green);
+		box-shadow: 0 4px 24px rgba(30, 138, 76, 0.08);
+	}
+
+	.plate-visual {
+		position: relative;
+		border-bottom: 1px solid var(--line);
+		background: repeating-linear-gradient(
+			45deg,
+			transparent,
+			transparent 8px,
+			var(--line-soft) 8px,
+			var(--line-soft) 9px
+		);
+	}
+
+	.plate-svg {
+		width: 100%;
+		display: block;
+		opacity: 0.7;
+	}
+
+	.plate-tag {
+		position: absolute;
+		top: 0.5rem;
+		left: 0.5rem;
+		color: var(--ink);
+		background: color-mix(in srgb, var(--paper) 85%, transparent);
+		padding: 0.2rem 0.5rem;
+	}
+
+	.plate-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		padding: clamp(0.8rem, 2vw, 1.2rem);
+	}
+
+	.plate-info strong {
+		font-size: 0.95rem;
+		font-weight: 600;
+	}
+
+	.plate-type {
+		font-size: 0.8rem;
+		color: var(--ink-3);
+	}
+
+	.plate-note {
+		margin-top: 0.4rem;
+		color: var(--ink-3);
+		opacity: 0.7;
+	}
+
+	@media (max-width: 48rem) {
+		.plates {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

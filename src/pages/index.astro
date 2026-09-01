@@ -1,11 +1,74 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Masthead from '../components/Masthead.astro';
+import Hero from '../components/Hero.astro';
+import Servicios from '../components/Servicios.astro';
+import Equipo from '../components/Equipo.astro';
+import Proceso from '../components/Proceso.astro';
+import Proyectos from '../components/Proyectos.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Construcciones Sostenibles – Planos de obra y gestiones técnicas">
+	<Masthead />
+	<main>
+		<Hero />
+		<Servicios />
+		<Equipo />
+		<Proceso />
+		<Proyectos />
+		<Contacto />
+	</main>
+	<Footer />
+
+	<script>
+		// Coordinadas reactivas en el hero
+		const readout = document.getElementById('coordReadout');
+		if (readout) {
+			const base = { e: 277165, n: 8676432 };
+			const hero = document.getElementById('hero');
+			if (hero) {
+				hero.addEventListener('mousemove', (e) => {
+					const rect = hero.getBoundingClientRect();
+					const x = (e.clientX - rect.left) / rect.width;
+					const y = (e.clientY - rect.top) / rect.height;
+					const eVal = Math.round(base.e + x * 110);
+					const nVal = Math.round(base.n - y * 82);
+					readout.innerHTML = `<span>E&nbsp;${eVal.toLocaleString('es-PE')}</span><span>N&nbsp;${nVal.toLocaleString('es-PE')}</span>`;
+				});
+			}
+		}
+
+		// Reveal on scroll
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				}
+			},
+			{ threshold: 0.12 }
+		);
+
+		document.querySelectorAll('section, .stamp, .step, .plate').forEach((el) => {
+			el.classList.add('reveal');
+			observer.observe(el);
+		});
+	</script>
 </Layout>
+
+<style is:global>
+	.reveal {
+		opacity: 0;
+		transform: translateY(18px);
+		transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+	}
+
+	.reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
