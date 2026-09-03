@@ -52,7 +52,10 @@ const categories = [
 			</span>
 		</div>
 
-		<h2 class="index-title">Planos de obra y gestiones técnicas para tu licencia de construcción en todo el Perú</h2>
+		<div class="index-head">
+			<h2 class="index-title">Planos listos para tu licencia</h2>
+			<p class="index-sub">Obra, gestiones, estudios y especiales en un solo expediente.</p>
+		</div>
 
 		<div class="index-grid">
 			{categories.map((cat) => (
@@ -101,14 +104,29 @@ const categories = [
 		gap: clamp(2rem, 4vw, 3rem);
 	}
 
+	.servicios .rule-label {
+		margin-bottom: clamp(1.2rem, 3vw, 2rem);
+	}
+
+	.index-head {
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+		max-width: 38rem;
+	}
+
 	.index-title {
 		font-stretch: 112%;
 		font-weight: 500;
 		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
 		line-height: 1.1;
 		letter-spacing: -0.03em;
-		margin-bottom: clamp(2rem, 4vw, 3rem);
-		max-width: 34rem;
+		margin: 0 0 0.7rem;
+	}
+
+	.index-sub {
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--ink-2);
+		margin: 0;
 	}
 
 	.cat-group {

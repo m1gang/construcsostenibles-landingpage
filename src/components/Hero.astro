@@ -138,8 +138,51 @@ const hero = {
 		min-height: 100svh;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		padding: clamp(5.5rem, 12vw, 8rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem);
 		overflow: hidden;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 54.01rem) {
+		.hero {
+			height: calc(100vh - var(--masthead-h));
+			height: calc(100svh - var(--masthead-h));
+			min-height: 540px;
+			max-height: none;
+			padding-top: clamp(1rem, 3vh, 2rem);
+			padding-bottom: clamp(1rem, 3vh, 2rem);
+		}
+
+		.hero-grid {
+			max-height: 100%;
+			gap: clamp(1.5rem, 4vw, 4rem);
+		}
+
+		.hero-left {
+			gap: clamp(0.7rem, 1.8vh, 1.1rem);
+			min-width: 0;
+		}
+
+		.hero-title {
+			font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+		}
+
+		.hero-sub {
+			font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+		}
+
+		.plate-frame {
+			max-width: min(100%, 34rem);
+			width: 100%;
+		}
+
+		.plate-svg {
+			max-height: calc(100vh - var(--masthead-h) - 7rem);
+			max-height: calc(100svh - var(--masthead-h) - 7rem);
+			width: 100%;
+			margin: 0 auto;
+		}
 	}
 
 	.corner {
@@ -368,7 +411,9 @@ const hero = {
 
 	@media (max-width: 54rem) {
 		.hero {
+			height: auto;
 			min-height: auto;
+			max-height: none;
 			padding-top: clamp(4.5rem, 16vw, 7rem);
 			padding-bottom: clamp(3rem, 8vw, 5rem);
 		}

@@ -16,9 +16,33 @@ const team = [
 			</span>
 		</div>
 
+		<div class="equipo-head">
+			<h2 class="equipo-title">Profesionales colegiados que firman tu expediente</h2>
+			<p class="equipo-sub">Arquitectura, estructuras, eléctricas y sanitarias. Cada plano lleva sello, número de colegiatura y firma responsable.</p>
+		</div>
+
 		<div class="team-grid">
 			{team.map((m) => (
 				<div class="stamp">
+					<div class="stamp-figure" aria-hidden="true">
+						<svg viewBox="0 0 160 104" fill="none" class="eng-svg">
+							<line x1="80" y1="0" x2="80" y2="104" stroke="var(--line-soft)" stroke-width="0.8" stroke-dasharray="3 3" />
+							<line x1="0" y1="52" x2="160" y2="52" stroke="var(--line-soft)" stroke-width="0.8" stroke-dasharray="3 3" />
+							<path d="M22 104 C22 82 44 73 80 73 C116 73 138 82 138 104" fill="var(--green-wash)" stroke="var(--ink)" stroke-width="1.2" />
+							<path d="M64 73 L73 88 L80 81 L87 88 L96 73" fill="none" stroke="var(--green-deep)" stroke-width="1.2" stroke-linejoin="round" />
+							<path d="M30 96 L130 96" stroke="var(--green-deep)" stroke-width="1" stroke-dasharray="4 3" opacity="0.7" />
+							<path d="M52 73 L58 88 M108 73 L102 88" stroke="var(--ink)" stroke-width="0.9" opacity="0.6" />
+							<rect x="70" y="60" width="20" height="14" fill="var(--paper)" stroke="var(--ink)" stroke-width="1" />
+							<ellipse cx="80" cy="49" rx="15" ry="14" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2" />
+							<path d="M53 42 C53 23 64 13 80 13 C96 13 107 23 107 42" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2" />
+							<rect x="76" y="8" width="8" height="10" rx="2" fill="var(--ink)" />
+							<rect x="46" y="41" width="68" height="7" rx="3.5" fill="var(--ink)" />
+							<line x1="60" y1="24" x2="60" y2="38" stroke="var(--line)" stroke-width="0.8" />
+							<line x1="100" y1="24" x2="100" y2="38" stroke="var(--line)" stroke-width="0.8" />
+							<circle cx="80" cy="49" r="1.4" fill="var(--ink)" opacity="0.5" />
+						</svg>
+						<span class="fig-tag tag">{m.role} · Nº {m.id}</span>
+					</div>
 					<div class="stamp-top">
 						<div class="stamp-avatar">{m.initial}</div>
 						<!-- Sello rotatorio -->
@@ -67,6 +91,31 @@ const team = [
 		padding: 0 clamp(1rem, 4vw, 2.5rem);
 	}
 
+	.equipo .rule-label {
+		margin-bottom: clamp(1.2rem, 3vw, 2rem);
+	}
+
+	.equipo-head {
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+		max-width: 38rem;
+	}
+
+	.equipo-title {
+		font-stretch: 112%;
+		font-weight: 500;
+		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		margin: 0 0 0.7rem;
+	}
+
+	.equipo-sub {
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--ink-2);
+		margin: 0;
+	}
+
 	.team-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -77,10 +126,56 @@ const team = [
 		display: flex;
 		flex-direction: column;
 		gap: 0.6rem;
-		padding: clamp(1rem, 2vw, 1.5rem);
+		padding: 0 0 clamp(1rem, 2vw, 1.5rem);
 		border: 1px solid var(--line);
 		background: var(--paper);
 		transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+		overflow: hidden;
+	}
+
+	.stamp-figure {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		padding: 0.8rem 0.8rem 0;
+		background:
+			linear-gradient(var(--line-soft) 0 0) center/100% 1px no-repeat,
+			linear-gradient(var(--line-soft) 0 0) center/1px 100% no-repeat,
+			repeating-linear-gradient(0deg, transparent, transparent 15px, color-mix(in srgb, var(--line-soft) 60%, transparent) 15px, color-mix(in srgb, var(--line-soft) 60%, transparent) 16px),
+			var(--sheet);
+		background-color: var(--sheet);
+		border-bottom: 1px solid var(--line-soft);
+		min-height: 118px;
+	}
+
+	.eng-svg {
+		width: 100%;
+		max-width: 170px;
+		height: auto;
+		display: block;
+		transition: transform 300ms var(--ease-out-expo);
+	}
+
+	.stamp:hover .eng-svg {
+		transform: translateY(-3px);
+	}
+
+	.fig-tag {
+		position: absolute;
+		top: 0.5rem;
+		left: 0.5rem;
+		background: color-mix(in srgb, var(--paper) 88%, transparent);
+		border: 1px solid var(--line);
+		padding: 0.15rem 0.45rem;
+		font-size: 0.6rem;
+	}
+
+	.stamp-top,
+	.stamp-info,
+	.stamp-sign {
+		padding-left: clamp(1rem, 2vw, 1.5rem);
+		padding-right: clamp(1rem, 2vw, 1.5rem);
 	}
 
 	.stamp:hover {

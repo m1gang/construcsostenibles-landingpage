@@ -16,6 +16,11 @@ const projects = [
 			</span>
 		</div>
 
+		<div class="section-head">
+			<h2 class="section-title">Expedientes y obras que ya pasaron por mesa de partes</h2>
+			<p class="section-sub">Una muestra de licencias, saneamientos y proyectos gestionados en Lima y provincias. Tus fotos finales irán aquí.</p>
+		</div>
+
 		<div class="plates">
 			{projects.map((p) => (
 				<article class="plate" data-tilt>
@@ -62,6 +67,31 @@ const projects = [
 		max-width: 76rem;
 		margin: 0 auto;
 		padding: 0 clamp(1rem, 4vw, 2.5rem);
+	}
+
+	.proyectos .rule-label {
+		margin-bottom: clamp(1.2rem, 3vw, 2rem);
+	}
+
+	.section-head {
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+		max-width: 38rem;
+	}
+
+	.section-title {
+		font-stretch: 112%;
+		font-weight: 500;
+		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		margin: 0 0 0.7rem;
+	}
+
+	.section-sub {
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--ink-2);
+		margin: 0;
 	}
 
 	.plates {
