@@ -1,21 +1,102 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 }
 
-const { title, description = 'Planos de obra, gestiones técnicas y certificaciones firmadas por profesionales colegiados. Lima, Perú.' } = Astro.props;
+const {
+	title = 'Planos de obra firmados en Perú | Construcciones Sostenibles',
+	description = 'Planos de obra firmados por ingenieros colegiados: licencia de construcción, planos sismorresistentes, ITSE y saneamiento legal. Servicio a nivel nacional.',
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const ogImage = canonical ? new URL('/og-image.png', canonical).href : undefined;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-PE">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/png" href="/isotipo.png" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+
 		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		{/* Geolocalización y marca */}
+		<meta name="geo.region" content="PE-LMA" />
+		<meta name="geo.placename" content="San Martín de Porres, Lima" />
+		<meta name="theme-color" content="#1e8a4c" />
+
+		{/* Canonical */}
+		{canonical && <link rel="canonical" href={canonical} />}
+
+		{/* Open Graph */}
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Construcciones Sostenibles" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{ogImage && <meta property="og:image" content={ogImage} />}
+		{canonical && <meta property="og:url" content={canonical} />}
+		<meta property="og:locale" content="es_PE" />
+
+		{/* Twitter Card */}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{ogImage && <meta name="twitter:image" content={ogImage} />}
+
+		{/* Datos estructurados: negocio y servicios */}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': ['LocalBusiness', 'ProfessionalService'],
+			'@id': (Astro.site?.href ?? '') + '#organization',
+			name: 'Construcciones Sostenibles',
+			description: 'Planos de obra firmados y aprobados, cálculos estructurales, licencias de construcción y gestión integral por equipo colegiado completo. Servicio a nivel nacional en Perú.',
+			url: Astro.site?.href,
+			image: ogImage,
+			telephone: '+51929057970',
+			email: 'construveli.sac@gmail.com',
+			priceRange: '$$',
+			areaServed: {
+				'@type': 'Country',
+				name: 'Perú',
+			},
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Av. Gerardo Unger Nº 277 – 1º Piso',
+				addressLocality: 'San Martín de Porres',
+				addressRegion: 'Lima',
+				postalCode: '15101',
+				addressCountry: 'PE',
+			},
+			geo: {
+				'@type': 'GeoCoordinates',
+				latitude: -11.9933,
+				longitude: -77.066,
+			},
+			openingHoursSpecification: [{
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+				opens: '08:00',
+				closes: '18:00',
+			}],
+			employee: [
+				{ '@type': 'Person', name: 'Moisés Sumari Jara', jobTitle: 'Arquitecto', description: 'Arquitecto colegiado CAP Nº 20636' },
+				{ '@type': 'Person', name: 'Rubén Melo Laguna', jobTitle: 'Ingeniero Civil', description: 'Ingeniero civil colegiado CIP Nº 114010' },
+				{ '@type': 'Person', name: 'Nerbaldo Nery Araujo Huamán', jobTitle: 'Ingeniero Electricista', description: 'Ingeniero electricista colegiado CIP Nº 356625' },
+				{ '@type': 'Person', name: 'Wilmer Armando Pérez Flores', jobTitle: 'Ingeniero Sanitario', description: 'Ingeniero sanitario colegiado CIP Nº 102980' },
+			],
+			makesOffer: [
+				{ '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Planos de obra sismorresistentes', description: 'Planos estructurales, cimentación, aligerado y cálculo estructural con EETT SAFE/ETABS.' } },
+				{ '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Licencia de construcción', description: 'Planos completos, memoria descriptiva, FUE y factibilidad para licencia de construcción en Lima.' } },
+				{ '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Declaratoria de fábrica y saneamiento legal', description: 'Declaratoria de fábrica, subdivisión de lotes e inscripción SUNARP.' } },
+				{ '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'ITSE y Defensa Civil', description: 'Planos de evacuación, señalización, cálculo de aforo e inspección técnica de seguridad.' } },
+			],
+			hasMap: 'https://www.google.com/maps/search/?api=1&query=Av.+Gerardo+Unger+277+San+Mart%C3%ADn+de+Porres+Lima',
+		})} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

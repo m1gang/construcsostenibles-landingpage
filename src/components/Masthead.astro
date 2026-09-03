@@ -5,6 +5,14 @@ interface Props {
 
 const { phone = '929 057 970' } = Astro.props;
 const tel = 'tel:+51' + phone.replace(/\s/g, '');
+
+const links = [
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#equipo', label: 'Equipo' },
+	{ href: '#proceso', label: 'Proceso' },
+	{ href: '#proyectos', label: 'Proyectos' },
+	{ href: '#contacto', label: 'Contacto' },
+];
 ---
 
 <header class="masthead" id="inicio">
@@ -17,19 +25,41 @@ const tel = 'tel:+51' + phone.replace(/\s/g, '');
 		</a>
 
 		<nav class="nav" aria-label="Navegación principal">
-			<a href="#servicios">Servicios</a>
-			<a href="#equipo">Equipo</a>
-			<a href="#proceso">Proceso</a>
-			<a href="#proyectos">Proyectos</a>
-			<a href="#contacto">Contacto</a>
+			{links.map((l) => <a href={l.href}>{l.label}</a>)}
 		</nav>
 
 		<a class="phone" href={tel}>
 			<span class="tag">Línea directa</span>
 			<span class="phone-num">{phone}</span>
 		</a>
+
+		<button class="hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+			<span></span><span></span><span></span>
+		</button>
 	</div>
 </header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+	<div class="mobile-nav-head">
+		<span class="tag">ÍNDICE DE LÁMINA</span>
+		<button class="mobile-close" id="navClose" aria-label="Cerrar menú">
+			<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1 L13 13 M13 1 L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+		</button>
+	</div>
+	<nav class="mobile-nav-links" aria-label="Navegación móvil">
+		{links.map((l, i) => (
+			<a href={l.href} class="mobile-link" style={`--i:${i}`}>
+				<span class="ml-num">0{i + 1}</span>
+				<span class="ml-label">{l.label}</span>
+				<span class="ml-arrow" aria-hidden="true">→</span>
+			</a>
+		))}
+	</nav>
+	<div class="mobile-nav-foot">
+		<a href={tel} class="mobile-phone">{phone}</a>
+		<span class="tag">SMP · LIMA · PERÚ</span>
+	</div>
+</div>
 
 <style>
 	.masthead {
@@ -38,7 +68,7 @@ const tel = 'tel:+51' + phone.replace(/\s/g, '');
 		backdrop-filter: blur(6px);
 		position: sticky;
 		top: 0;
-		z-index: 50;
+		z-index: 60;
 	}
 
 	.masthead-inner {
@@ -96,7 +126,21 @@ const tel = 'tel:+51' + phone.replace(/\s/g, '');
 		text-decoration: none;
 		color: var(--ink-2);
 		border-left: 1px solid var(--line-soft);
-		transition: color 200ms var(--ease-out-expo), background 200ms var(--ease-out-expo);
+		position: relative;
+		transition: color 200ms var(--ease-out-expo);
+	}
+
+	.nav a::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--green);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 250ms var(--ease-out-expo);
 	}
 
 	.nav a:last-child {
@@ -105,7 +149,10 @@ const tel = 'tel:+51' + phone.replace(/\s/g, '');
 
 	.nav a:hover {
 		color: var(--green-deep);
-		background: var(--green-wash);
+	}
+
+	.nav a:hover::after {
+		transform: scaleX(1);
 	}
 
 	.phone {
@@ -130,13 +177,193 @@ const tel = 'tel:+51' + phone.replace(/\s/g, '');
 		color: var(--green-deep);
 	}
 
+	/* ---- hamburguesa ---- */
+	.hamburger {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		background: none;
+		border: 1px solid var(--line);
+		width: 44px;
+		height: 44px;
+		padding: 0 10px;
+		cursor: pointer;
+		align-self: center;
+	}
+
+	.hamburger span {
+		display: block;
+		height: 1.5px;
+		background: var(--ink);
+		transition: transform 250ms var(--ease-out-expo), opacity 200ms;
+	}
+
+	.hamburger[aria-expanded='true'] span:nth-child(1) {
+		transform: translateY(6.5px) rotate(45deg);
+	}
+	.hamburger[aria-expanded='true'] span:nth-child(2) {
+		opacity: 0;
+	}
+	.hamburger[aria-expanded='true'] span:nth-child(3) {
+		transform: translateY(-6.5px) rotate(-45deg);
+	}
+
+	/* ---- nav móvil ---- */
+	.mobile-nav {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		background: var(--paper);
+		background-image:
+			linear-gradient(to right, var(--grid) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+			linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px);
+		background-size: 28px 28px, 28px 28px, 140px 140px, 140px 140px;
+		display: flex;
+		flex-direction: column;
+		padding: 1.2rem;
+		clip-path: inset(0 0 100% 0);
+		transition: clip-path 500ms var(--ease-out-expo);
+		visibility: hidden;
+	}
+
+	.mobile-nav.open {
+		clip-path: inset(0 0 0 0);
+		visibility: visible;
+	}
+
+	.mobile-nav-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--ink);
+	}
+
+	.mobile-close {
+		background: none;
+		border: 1px solid var(--line);
+		width: 42px;
+		height: 42px;
+		font-size: 1rem;
+		color: var(--ink);
+		cursor: pointer;
+	}
+
+	.mobile-nav-links {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.2rem;
+	}
+
+	.mobile-link {
+		display: grid;
+		grid-template-columns: 3rem 1fr auto;
+		align-items: center;
+		padding: 0.9rem 0.4rem;
+		text-decoration: none;
+		border-bottom: 1px solid var(--line);
+		opacity: 0;
+		transform: translateY(14px);
+	}
+
+	.mobile-nav.open .mobile-link {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 400ms var(--ease-out-expo) calc(var(--i) * 60ms + 200ms),
+			transform 400ms var(--ease-out-expo) calc(var(--i) * 60ms + 200ms);
+	}
+
+	.ml-num {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--ink-3);
+	}
+
+	.ml-label {
+		font-stretch: 112%;
+		font-size: 1.6rem;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--ink);
+	}
+
+	.ml-arrow {
+		font-size: 1.2rem;
+		color: var(--green-deep);
+		transition: transform 200ms var(--ease-out-expo);
+	}
+
+	.mobile-link:hover .ml-arrow {
+		transform: translateX(6px);
+	}
+
+	.mobile-nav-foot {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 1rem;
+		border-top: 1px solid var(--ink);
+	}
+
+	.mobile-phone {
+		font-family: var(--font-mono);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--green-deep);
+		text-decoration: none;
+	}
+
 	@media (max-width: 54rem) {
-		.nav {
+		.nav,
+		.phone {
 			display: none;
 		}
 		.masthead-inner {
 			grid-template-columns: auto auto;
 			justify-content: space-between;
 		}
+		.hamburger {
+			display: flex;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.mobile-nav {
+			transition: none;
+		}
+		.mobile-nav.open .mobile-link {
+			transition: none;
+		}
 	}
 </style>
+
+<script>
+	const toggle = document.getElementById('navToggle');
+	const panel = document.getElementById('mobileNav');
+	const closeBtn = document.getElementById('navClose');
+
+	function setMenu(open: boolean) {
+		if (!toggle || !panel) return;
+		toggle.setAttribute('aria-expanded', String(open));
+		toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+		panel.classList.toggle('open', open);
+		panel.setAttribute('aria-hidden', String(!open));
+		document.body.style.overflow = open ? 'hidden' : '';
+	}
+
+	toggle?.addEventListener('click', () =>
+		setMenu(toggle.getAttribute('aria-expanded') !== 'true')
+	);
+	closeBtn?.addEventListener('click', () => setMenu(false));
+	panel?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+	window.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') setMenu(false);
+	});
+</script>

@@ -3,41 +3,41 @@ const categories = [
 	{
 		name: 'Planos de obra',
 		items: [
-			{ code: 'A-01', name: 'Planos sismorresistentes', desc: 'Estructural, cimentación, aligerado, cálculo EETT SAFE/ETABS' },
-			{ code: 'A-02', name: 'Arquitectura y fachada', desc: 'Plano de arquitectura, cortes, elevaciones, diseño 3D' },
-			{ code: 'A-03', name: 'Instalaciones eléctricas', desc: 'Alumbrado, tomacorrientes, comunicación, diagrama unifilar' },
-			{ code: 'A-04', name: 'Instalaciones sanitarias', desc: 'Agua, desagüe, cisterna, tanque elevado, agua fría y caliente' },
+			{ code: 'A-01', name: 'Planos sismorresistentes', desc: 'Estructural, cimentacion, aligerado, calculo EETT SAFE/ETABS' },
+			{ code: 'A-02', name: 'Arquitectura y fachada', desc: 'Plano de arquitectura, cortes, elevaciones, diseno 3D' },
+			{ code: 'A-03', name: 'Instalaciones electricas', desc: 'Alumbrado, tomacorrientes, comunicacion, diagrama unifilar' },
+			{ code: 'A-04', name: 'Instalaciones sanitarias', desc: 'Agua, desague, cisterna, tanque elevado, agua fria y caliente' },
 			{ code: 'A-05', name: 'Instalaciones de gas', desc: 'Plano de gas certificado' },
-			{ code: 'A-06', name: 'Licencia de construcción', desc: 'Todos los planos + memoria descriptiva + FUE + factibilidad' },
+			{ code: 'A-06', name: 'Licencia de construccion', desc: 'Todos los planos + memoria descriptiva + FUE + factibilidad' },
 		],
 	},
 	{
-		name: 'Gestiones técnicas',
+		name: 'Gestiones tecnicas',
 		items: [
 			{ code: 'B-01', name: 'Medidor de agua adicional', desc: 'Planos sanitarios + memoria + firmado por ingeniero sanitario' },
-			{ code: 'B-02', name: 'Medidor de luz adicional', desc: 'Planos eléctricos + cuadro de cargas + firmado por ingeniero' },
-			{ code: 'B-03', name: 'Prescripción adquisitiva', desc: 'Plano perimétrico UTM + memoria + firmado por ingeniero civil' },
-			{ code: 'B-04', name: 'ITSE / Defensa Civil', desc: 'Evacuación, señalización, cálculo de aforo, detectores, alarma' },
-			{ code: 'B-05', name: 'Saneamiento legal', desc: 'Declaratoria de fábrica, subdivisión de lotes, SUNARP' },
-			{ code: 'B-06', name: 'Letreros luminosos', desc: 'Plano eléctrico + estructural + arquitectónico + elevación' },
+			{ code: 'B-02', name: 'Medidor de luz adicional', desc: 'Planos electricos + cuadro de cargas + firmado por ingeniero' },
+			{ code: 'B-03', name: 'Prescripcion adquisitiva', desc: 'Plano perimetrico UTM + memoria + firmado por ingeniero civil' },
+			{ code: 'B-04', name: 'ITSE / Defensa Civil', desc: 'Evacuacion, senalizacion, calculo de aforo, detectores, alarma' },
+			{ code: 'B-05', name: 'Saneamiento legal', desc: 'Declaratoria de fabrica, subdivision de lotes, SUNARP' },
+			{ code: 'B-06', name: 'Letreros luminosos', desc: 'Plano electrico + estructural + arquitectonico + elevacion' },
 		],
 	},
 	{
 		name: 'Estudios y certificados',
 		items: [
-			{ code: 'C-01', name: 'Estudio de suelo', desc: 'Calicatas, análisis, informe técnico firmado por ingeniero civil' },
-			{ code: 'C-02', name: 'Estructuras metálicas', desc: 'Plano cobertura, columnas, memoria de cálculo estructural' },
-			{ code: 'C-03', name: 'Tasaciones de inmuebles', desc: 'Valorización por homologación y depreciación' },
+			{ code: 'C-01', name: 'Estudio de suelo', desc: 'Calicatas, analisis, informe tecnico firmado por ingeniero civil' },
+			{ code: 'C-02', name: 'Estructuras metalicas', desc: 'Plano cobertura, columnas, memoria de calculo estructural' },
+			{ code: 'C-03', name: 'Tasaciones de inmuebles', desc: 'Valorizacion por homologacion y depreciacion' },
 			{ code: 'C-04', name: 'Certificados profesionales', desc: 'Luz de emergencia, pozo a tierra, detectores, rociadores' },
 		],
 	},
 	{
 		name: 'Servicios especiales',
 		items: [
-			{ code: 'D-01', name: 'Obra domótica con paneles solares', desc: 'Cámaras, alarmas, alertas en tiempo real, energía limpia' },
-			{ code: 'D-02', name: 'Instalación pozo a tierra', desc: 'Materiales, excavación, conexión, certificación' },
-			{ code: 'D-03', name: 'Servicio de firmas', desc: '8 especialidades: civil, eléctrico, sanitario, arquitecto, mecánico' },
-			{ code: 'D-04', name: 'Ploteos A0–A3', desc: 'Impresión, copia y escaneo con envío a provincia' },
+			{ code: 'D-01', name: 'Obra domestica con paneles solares', desc: 'Camaras, alarmas, alertas en tiempo real, energia limpia' },
+			{ code: 'D-02', name: 'Instalacion pozo a tierra', desc: 'Materiales, excavacion, conexion, certificacion' },
+			{ code: 'D-03', name: 'Servicio de firmas', desc: '8 especialidades: civil, electrico, sanitario, arquitecto, mecanico' },
+			{ code: 'D-04', name: 'Ploteos A0-A3', desc: 'Impresion, copia y escaneo con envio a provincia' },
 		],
 	},
 ];
@@ -48,22 +48,33 @@ const categories = [
 		<div class="rule-label">
 			<span class="tag">
 				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="12" stroke="currentColor" stroke-width="1.2" /><line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 2" /></svg>
-				ÍNDICE DE PLANOS
+				INDICE DE PLANOS
 			</span>
 		</div>
+
+		<h2 class="index-title">Planos de obra y gestiones técnicas para tu licencia de construcción en todo el Perú</h2>
 
 		<div class="index-grid">
 			{categories.map((cat) => (
 				<div class="cat-group">
-					<h2 class="cat-title">{cat.name}</h2>
+					<h3 class="cat-title">{cat.name}</h3>
 					<ul class="cat-list">
 						{cat.items.map((item) => (
-							<li class="service-row">
-								<span class="svc-code">{item.code}</span>
-								<span class="svc-body">
-									<strong>{item.name}</strong>
-									<span class="svc-desc">{item.desc}</span>
-								</span>
+							<li class="svc-wrap">
+								<details class="svc-details">
+									<summary class="service-row">
+										<span class="svc-code">{item.code}</span>
+										<span class="svc-body">
+											<strong>{item.name}</strong>
+											<span class="svc-arrow" aria-hidden="true">
+												<svg width="14" height="14" viewBox="0 0 14 14"><path d="M4 5.5 L7 8.5 L10 5.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" /></svg>
+											</span>
+										</span>
+									</summary>
+									<div class="svc-expand">
+										<span class="svc-desc">{item.desc}</span>
+									</div>
+								</details>
 							</li>
 						))}
 					</ul>
@@ -90,6 +101,16 @@ const categories = [
 		gap: clamp(2rem, 4vw, 3rem);
 	}
 
+	.index-title {
+		font-stretch: 112%;
+		font-weight: 500;
+		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
+		max-width: 34rem;
+	}
+
 	.cat-group {
 		background: var(--sheet);
 		border: 1px solid var(--line);
@@ -112,8 +133,18 @@ const categories = [
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		display: flex;
-		flex-direction: column;
+	}
+
+	.svc-wrap {
+		border-bottom: 1px solid var(--line-soft);
+	}
+
+	.svc-wrap:last-child {
+		border-bottom: none;
+	}
+
+	.svc-details {
+		margin: 0;
 	}
 
 	.service-row {
@@ -121,12 +152,15 @@ const categories = [
 		grid-template-columns: 3.2rem 1fr;
 		gap: 0.75rem;
 		padding: 0.65rem 0;
-		border-bottom: 1px solid var(--line-soft);
+		cursor: pointer;
+		list-style: none;
 		transition: background 180ms var(--ease-out-expo);
 	}
 
-	.service-row:last-child {
-		border-bottom: none;
+	.service-row::-webkit-details-marker,
+	.service-row::marker {
+		display: none;
+		content: '';
 	}
 
 	.service-row:hover {
@@ -143,14 +177,36 @@ const categories = [
 
 	.svc-body {
 		display: flex;
-		flex-direction: column;
-		gap: 0.15rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
 	}
 
 	.svc-body strong {
 		font-size: 0.9rem;
 		font-weight: 600;
 		color: var(--ink);
+	}
+
+	.svc-arrow {
+		color: var(--ink-3);
+		transition: transform 250ms var(--ease-out-expo);
+		flex-shrink: 0;
+	}
+
+	.svc-details[open] .svc-arrow {
+		transform: rotate(180deg);
+	}
+
+	.svc-expand {
+		padding: 0 0 0 3.95rem 0.5rem 0.65rem;
+		overflow: hidden;
+		animation: svc-open 250ms var(--ease-out-expo);
+	}
+
+	@keyframes svc-open {
+		from { opacity: 0; transform: translateY(-6px); }
+		to { opacity: 1; transform: translateY(0); }
 	}
 
 	.svc-desc {
@@ -160,8 +216,10 @@ const categories = [
 	}
 
 	@media (max-width: 48rem) {
-		.index-grid {
-			grid-template-columns: 1fr;
-		}
+		.index-grid { grid-template-columns: 1fr; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.svc-expand { animation: none; }
 	}
 </style>
