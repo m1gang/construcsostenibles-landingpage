@@ -1,0 +1,135 @@
+.proyectos {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+  background: var(--sheet);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.proyectos .container {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.proyectos .rule-label {
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+}
+
+.proyectos .section-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 38rem;
+}
+
+.proyectos .section-title {
+  font-stretch: 112%;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.7rem;
+}
+
+.proyectos .section-sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.proyectos .plates {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.proyectos .plate {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+  perspective: 600px;
+}
+
+.proyectos .plate:hover {
+  border-color: var(--green);
+  box-shadow: 0 4px 24px rgba(30, 138, 76, 0.08);
+}
+
+.plate-visual {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  background: repeating-linear-gradient(45deg, transparent, transparent 8px, var(--line-soft) 8px, var(--line-soft) 9px);
+}
+
+.proyectos .plate-svg {
+  width: 100%;
+  display: block;
+  opacity: 0.7;
+  transition: transform 300ms var(--ease-out-expo), opacity 300ms var(--ease-out-expo);
+}
+
+.proyectos .plate:hover .plate-svg {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.plate-tag {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  padding: 0.2rem 0.5rem;
+  z-index: 2;
+}
+
+.plate-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 138, 76, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out-expo);
+  z-index: 1;
+}
+
+.proyectos .plate:hover .plate-overlay {
+  opacity: 1;
+}
+
+.plate-overlay .tag {
+  background: var(--sheet);
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--green);
+  color: var(--green-deep);
+}
+
+.plate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.plate-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.plate-type {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.plate-note {
+  margin-top: 0.4rem;
+  color: var(--ink-3);
+  opacity: 0.7;
+}
+
+@media (max-width: 48rem) {
+  .proyectos .plates { grid-template-columns: 1fr; }
+}

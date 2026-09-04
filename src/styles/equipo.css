@@ -1,0 +1,181 @@
+.equipo {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+  background: var(--sheet);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.equipo .container {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.equipo .rule-label {
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+}
+
+.equipo-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 38rem;
+}
+
+.equipo-title {
+  font-stretch: 112%;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.7rem;
+}
+
+.equipo-sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.stamp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0 0 clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
+  overflow: hidden;
+}
+
+.stamp-figure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.8rem 0.8rem 0;
+  background:
+    linear-gradient(var(--line-soft) 0 0) center/100% 1px no-repeat,
+    linear-gradient(var(--line-soft) 0 0) center/1px 100% no-repeat,
+    repeating-linear-gradient(0deg, transparent, transparent 15px, color-mix(in srgb, var(--line-soft) 60%, transparent) 15px, color-mix(in srgb, var(--line-soft) 60%, transparent) 16px),
+    var(--sheet);
+  background-color: var(--sheet);
+  border-bottom: 1px solid var(--line-soft);
+  min-height: 118px;
+}
+
+.eng-svg {
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+  display: block;
+  transition: transform 300ms var(--ease-out-expo);
+}
+
+.stamp:hover .eng-svg {
+  transform: translateY(-3px);
+}
+
+.fig-tag {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border: 1px solid var(--line);
+  padding: 0.15rem 0.45rem;
+  font-size: 0.6rem;
+}
+
+.stamp-top,
+.stamp-info,
+.stamp-sign {
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.stamp:hover {
+  border-color: var(--green);
+  box-shadow: 0 2px 16px rgba(30, 138, 76, 0.08);
+}
+
+.stamp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stamp-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--green-wash);
+  border: 1px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+/* Sello rotatorio */
+.seal {
+  width: 56px;
+  height: 56px;
+  opacity: 0.2;
+  transition: opacity 400ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+}
+
+.stamp:hover .seal {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.seal-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.stamp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.stamp-info strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.stamp-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+
+.stamp-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.sig-svg {
+  width: 100%;
+  height: 18px;
+}
+
+@media (max-width: 54rem) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 30rem) {
+  .team-grid { grid-template-columns: 1fr; }
+}

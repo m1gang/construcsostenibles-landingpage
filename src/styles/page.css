@@ -1,0 +1,79 @@
+/* Cursor seguidor, barra de progreso y reveal on scroll.
+   Antes: <style is:global> en src/pages/index.astro */
+
+/* Cursor */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.has-cursor .cursor-follower {
+  opacity: 1;
+}
+
+/* Barra de progreso */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 70;
+  background: var(--line);
+}
+.progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--green);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 80ms linear;
+  will-change: transform;
+}
+.progress-ticks {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  right: 0;
+}
+.ptick {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--ink-3);
+  transform: translateX(-50%);
+  top: 2px;
+  opacity: 0.5;
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 650ms var(--ease-out-expo),
+    transform 650ms var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-follower {
+    display: none;
+  }
+  .progress-fill {
+    transition: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

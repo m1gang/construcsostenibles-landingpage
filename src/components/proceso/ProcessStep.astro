@@ -1,0 +1,23 @@
+---
+import type { ProcessStep as Step } from "../../data/proceso";
+
+interface Props {
+  step: Step;
+  showConnector: boolean;
+}
+
+const { step: s, showConnector } = Astro.props;
+---
+
+<div class="step">
+  <span class="step-pct">{s.pct}</span>
+  <div class="step-body">
+    <strong class="step-label">{s.label}</strong>
+    <p class="step-desc">{s.desc}</p>
+  </div>
+  {showConnector && <div class="step-connector" aria-hidden="true">
+    <svg width="100%" height="24" viewBox="0 0 200 24" preserveAspectRatio="none" fill="none">
+      <path d="M0 12 H180 L172 6 M180 12 L172 18" stroke="var(--line)" stroke-width="1" stroke-linecap="round" />
+    </svg>
+  </div>}
+</div>

@@ -1,0 +1,119 @@
+.proceso {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.proceso .container {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.proceso .rule-label {
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+}
+
+.proceso .section-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 38rem;
+}
+
+.proceso .section-title {
+  font-stretch: 112%;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.7rem;
+}
+
+.proceso .section-sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--line);
+  background: var(--sheet);
+  position: relative;
+  transition: border-color 200ms var(--ease-out-expo), transform 200ms var(--ease-out-expo);
+}
+
+.step:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.step-pct {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.step-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.step-connector {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .step-connector {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -2rem;
+    transform: translateY(-50%);
+    width: 2rem;
+    overflow: visible;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .step {
+    border-bottom: none;
+  }
+
+  .step:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .step:not(:last-child)::after {
+    content: '';
+    display: block;
+    border-bottom: 1px dashed var(--line);
+    margin-top: 1rem;
+  }
+}

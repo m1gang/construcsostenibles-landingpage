@@ -1,0 +1,40 @@
+.cinta {
+  overflow: hidden;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.65rem 0;
+  background: var(--sheet);
+}
+
+.cinta-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: scroll-cinta 40s linear infinite;
+}
+
+.cinta-item {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.cinta-dot {
+  flex-shrink: 0;
+}
+
+@keyframes scroll-cinta {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinta-track { animation: none; }
+}

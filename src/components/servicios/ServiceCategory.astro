@@ -1,0 +1,33 @@
+---
+import type { ServicioCategory } from "../../data/servicios";
+
+interface Props {
+  category: ServicioCategory;
+}
+
+const { category } = Astro.props;
+---
+
+<div class="cat-group">
+  <h3 class="cat-title">{category.name}</h3>
+  <ul class="cat-list">
+    {category.items.map((item) => (
+      <li class="svc-wrap">
+        <details class="svc-details">
+          <summary class="service-row">
+            <span class="svc-code">{item.code}</span>
+            <span class="svc-body">
+              <strong>{item.name}</strong>
+              <span class="svc-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14"><path d="M4 5.5 L7 8.5 L10 5.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" /></svg>
+              </span>
+            </span>
+          </summary>
+          <div class="svc-expand">
+            <span class="svc-desc">{item.desc}</span>
+          </div>
+        </details>
+      </li>
+    ))}
+  </ul>
+</div>

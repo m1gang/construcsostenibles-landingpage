@@ -1,0 +1,76 @@
+---
+---
+
+<div class="hero-right">
+  <div class="plate-frame">
+    <svg class="plate-svg" viewBox="0 0 520 420" fill="none" aria-hidden="true">
+      <defs>
+        <pattern id="hg" width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M 16 0 L 0 0 0 16" fill="none" stroke="var(--grid)" stroke-width="0.4" />
+        </pattern>
+        <pattern id="hgM" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="var(--grid-strong)" stroke-width="0.6" />
+        </pattern>
+        <mask id="contourMask"><rect width="520" height="420" fill="white"/></mask>
+      </defs>
+      <rect width="520" height="420" fill="url(#hg)" />
+      <rect width="520" height="420" fill="url(#hgM)" />
+
+      <!-- Curvas de nivel — se dibujan con animación -->
+      <g mask="url(#contourMask)">
+        <path class="contour c1" d="M20 360 C80 330 140 300 210 275 S310 240 380 215 S460 185 520 160" stroke="var(--line)" stroke-width="0.7" fill="none" stroke-dasharray="4 2" />
+        <path class="contour c2" d="M0 300 C60 265 130 240 200 215 S290 180 370 155 S450 125 520 100" stroke="var(--ink-3)" stroke-width="0.9" fill="none" stroke-dasharray="4 2" />
+        <path class="contour c3" d="M40 240 C100 210 160 185 230 160 S320 130 400 105 S480 75 520 55" stroke="var(--ink-2)" stroke-width="1.1" fill="none" />
+        <path class="contour c4" d="M0 180 C50 155 110 135 175 115 S260 85 340 65 S430 40 520 20" stroke="var(--ink-3)" stroke-width="0.8" fill="none" stroke-dasharray="4 2" />
+        <path class="contour c5" d="M80 400 C120 385 170 365 230 345 S320 310 400 285 S470 260 520 245" stroke="var(--line-soft)" stroke-width="0.6" fill="none" stroke-dasharray="2 3" />
+        <path class="contour c6" d="M0 120 C40 100 90 82 145 65 S230 40 310 22 S400 5 480 0" stroke="var(--ink-3)" stroke-width="0.7" fill="none" stroke-dasharray="3 2" />
+      </g>
+
+      <!-- Estaciones -->
+      <g class="stations">
+        <circle cx="130" cy="220" r="3" fill="var(--ink)" /><text x="138" y="218" class="st-label">E-01</text>
+        <circle cx="310" cy="170" r="3" fill="var(--ink)" /><text x="318" y="168" class="st-label">E-02</text>
+        <circle cx="440" cy="110" r="3" fill="var(--ink)" /><text x="448" y="108" class="st-label">E-03</text>
+        <circle cx="220" cy="290" r="3" fill="var(--ink)" /><text x="228" y="288" class="st-label">E-04</text>
+        <circle cx="380" cy="250" r="3" fill="var(--ink)" /><text x="388" y="248" class="st-label">E-05</text>
+      </g>
+
+      <!-- Norte con aguja -->
+      <g class="north" id="northNeedle" transform="translate(458, 355)">
+        <circle r="20" fill="var(--sheet)" stroke="var(--ink)" stroke-width="1" />
+        <line class="needle" y1="-13" y2="8" stroke="var(--ink)" stroke-width="1.5" />
+        <polygon class="needle" points="-4,8 4,8 0,15" fill="var(--ink)" />
+        <text y="-17" text-anchor="middle" class="north-label">N</text>
+      </g>
+
+      <!-- Escala -->
+      <g transform="translate(16, 390)" class="scale-bar">
+        <line x1="0" y1="0" x2="100" y2="0" stroke="var(--ink)" stroke-width="1" />
+        <line x1="0" y1="-3" x2="0" y2="3" stroke="var(--ink)" stroke-width="1" />
+        <line x1="50" y1="-3" x2="50" y2="3" stroke="var(--ink)" stroke-width="1" />
+        <line x1="100" y1="-3" x2="100" y2="3" stroke="var(--ink)" stroke-width="1" />
+        <text y="13">0</text>
+        <text x="50" y="13" text-anchor="middle">50 m</text>
+        <text x="100" y="13" text-anchor="end">100 m</text>
+      </g>
+
+      <!-- Coordenadas -->
+      <g class="utm-ticks">
+        <text x="16" y="412">8 676 432 N</text>
+        <text x="420" y="412">8 676 350 N</text>
+        <text x="16" y="14">277 165 E</text>
+        <text x="430" y="14">277 275 E</text>
+      </g>
+
+      <!-- Borde -->
+      <rect x="1" y="1" width="518" height="418" stroke="var(--ink)" stroke-width="1.4" fill="none" />
+    </svg>
+
+    <!-- Tooltip de medición -->
+    <div class="measure-chip" id="measureChip">
+      <span id="measureE">E 277 165</span>
+      <span class="mc-sep">/</span>
+      <span id="measureN">N 8 676 432</span>
+    </div>
+  </div>
+</div>

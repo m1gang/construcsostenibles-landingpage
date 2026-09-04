@@ -1,209 +1,29 @@
 ---
-const projects = [
-	{ id: '01', title: 'Obra residencial multifamiliar', type: 'Planos sismorresistentes + licencia' },
-	{ id: '02', title: 'Local comercial – Saneamiento legal', type: 'Declaratoria de fabrica SUNARP' },
-	{ id: '03', title: 'Vivienda unifamiliar sostenible', type: 'Domotica + paneles solares' },
-	{ id: '04', title: 'Oficina corporativa', type: 'ITSE + Defensa Civil' },
-];
+import "../styles/proyectos.css";
+import { projects } from "../data/proyectos";
+import ProjectPlate from "./proyectos/ProjectPlate.astro";
 ---
 
 <section class="proyectos" id="proyectos">
-	<div class="container">
-		<div class="rule-label">
-			<span class="tag">
-				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="14" height="14" stroke="currentColor" stroke-width="1.2" /><rect x="4" y="4" width="8" height="8" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 2" /></svg>
-				LAMINAS DE OBRA
-			</span>
-		</div>
+  <div class="container">
+    <div class="rule-label">
+      <span class="tag">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="14" height="14" stroke="currentColor" stroke-width="1.2" /><rect x="4" y="4" width="8" height="8" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 2" /></svg>
+        LAMINAS DE OBRA
+      </span>
+    </div>
 
-		<div class="section-head">
-			<h2 class="section-title">Expedientes y obras que ya pasaron por mesa de partes</h2>
-			<p class="section-sub">Una muestra de licencias, saneamientos y proyectos gestionados en Lima y provincias. Tus fotos finales irán aquí.</p>
-		</div>
+    <div class="section-head">
+      <h2 class="section-title">Expedientes y obras que ya pasaron por mesa de partes</h2>
+      <p class="section-sub">Una muestra de licencias, saneamientos y proyectos gestionados en Lima y provincias. Tus fotos finales irán aquí.</p>
+    </div>
 
-		<div class="plates">
-			{projects.map((p) => (
-				<article class="plate" data-tilt>
-					<div class="plate-visual">
-						<svg viewBox="0 0 400 280" fill="none" aria-hidden="true" class="plate-svg">
-							<defs>
-								<pattern id={`pg-${p.id}`} width="16" height="16" patternUnits="userSpaceOnUse">
-									<path d="M 16 0 L 0 0 0 16" fill="none" stroke="var(--grid)" stroke-width="0.4" />
-								</pattern>
-							</defs>
-							<rect width="400" height="280" fill={`url(#pg-${p.id})`} />
-							<rect x="80" y="100" width="240" height="160" fill="none" stroke="var(--line)" stroke-width="1" />
-							<rect x="110" y="130" width="60" height="80" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
-							<rect x="230" y="130" width="60" height="80" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
-							<line x1="80" y1="100" x2="200" y2="55" stroke="var(--ink-3)" stroke-width="0.8" />
-							<line x1="200" y1="55" x2="320" y2="100" stroke="var(--ink-3)" stroke-width="0.8" />
-							<text x="200" y="148" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="var(--ink-3)" opacity="0.4" transform="rotate(-12 200 148)">ESPACIO RESERVADO</text>
-						</svg>
-						<span class="plate-tag tag">LAMINA N {p.id}</span>
-						<div class="plate-overlay">
-							<span class="tag">Ver detalle</span>
-						</div>
-					</div>
-					<div class="plate-info">
-						<h3 class="plate-title">{p.title}</h3>
-						<span class="plate-type">{p.type}</span>
-						<span class="plate-note tag">Fotografia de obra – por incorporar</span>
-					</div>
-				</article>
-			))}
-		</div>
-	</div>
+    <div class="plates">
+      {projects.map((p) => <ProjectPlate project={p} />)}
+    </div>
+  </div>
 </section>
 
-<style>
-	.proyectos {
-		padding: clamp(3rem, 8vw, 6rem) 0;
-		background: var(--sheet);
-		border-top: 1px solid var(--line);
-		border-bottom: 1px solid var(--line);
-	}
-
-	.container {
-		max-width: 76rem;
-		margin: 0 auto;
-		padding: 0 clamp(1rem, 4vw, 2.5rem);
-	}
-
-	.proyectos .rule-label {
-		margin-bottom: clamp(1.2rem, 3vw, 2rem);
-	}
-
-	.section-head {
-		margin-bottom: clamp(2rem, 4vw, 3rem);
-		max-width: 38rem;
-	}
-
-	.section-title {
-		font-stretch: 112%;
-		font-weight: 500;
-		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-		line-height: 1.1;
-		letter-spacing: -0.03em;
-		margin: 0 0 0.7rem;
-	}
-
-	.section-sub {
-		font-size: 1rem;
-		line-height: 1.55;
-		color: var(--ink-2);
-		margin: 0;
-	}
-
-	.plates {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: clamp(1rem, 2vw, 1.5rem);
-	}
-
-	.plate {
-		border: 1px solid var(--line);
-		background: var(--paper);
-		transition: border-color 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo);
-		perspective: 600px;
-	}
-
-	.plate:hover {
-		border-color: var(--green);
-		box-shadow: 0 4px 24px rgba(30, 138, 76, 0.08);
-	}
-
-	.plate-visual {
-		position: relative;
-		border-bottom: 1px solid var(--line);
-		overflow: hidden;
-		background: repeating-linear-gradient(45deg, transparent, transparent 8px, var(--line-soft) 8px, var(--line-soft) 9px);
-	}
-
-	.plate-svg {
-		width: 100%;
-		display: block;
-		opacity: 0.7;
-		transition: transform 300ms var(--ease-out-expo), opacity 300ms var(--ease-out-expo);
-	}
-
-	.plate:hover .plate-svg {
-		opacity: 1;
-		transform: scale(1.03);
-	}
-
-	.plate-tag {
-		position: absolute;
-		top: 0.5rem;
-		left: 0.5rem;
-		color: var(--ink);
-		background: color-mix(in srgb, var(--paper) 85%, transparent);
-		padding: 0.2rem 0.5rem;
-		z-index: 2;
-	}
-
-	.plate-overlay {
-		position: absolute;
-		inset: 0;
-		background: rgba(30, 138, 76, 0.08);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		transition: opacity 300ms var(--ease-out-expo);
-		z-index: 1;
-	}
-
-	.plate:hover .plate-overlay {
-		opacity: 1;
-	}
-
-	.plate-overlay .tag {
-		background: var(--sheet);
-		padding: 0.4rem 1rem;
-		border: 1px solid var(--green);
-		color: var(--green-deep);
-	}
-
-	.plate-info {
-		display: flex;
-		flex-direction: column;
-		gap: 0.2rem;
-		padding: clamp(0.8rem, 2vw, 1.2rem);
-	}
-
-	.plate-title {
-		font-size: 0.95rem;
-		font-weight: 600;
-		margin: 0;
-	}
-
-	.plate-type {
-		font-size: 0.8rem;
-		color: var(--ink-3);
-	}
-
-	.plate-note {
-		margin-top: 0.4rem;
-		color: var(--ink-3);
-		opacity: 0.7;
-	}
-
-	@media (max-width: 48rem) {
-		.plates { grid-template-columns: 1fr; }
-	}
-</style>
-
 <script>
-	// Tilt 3D en tarjetas
-	document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((card) => {
-		card.addEventListener('mousemove', (e) => {
-			const rect = card.getBoundingClientRect();
-			const x = (e.clientX - rect.left) / rect.width - 0.5;
-			const y = (e.clientY - rect.top) / rect.height - 0.5;
-			card.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
-		});
-		card.addEventListener('mouseleave', () => {
-			card.style.transform = '';
-		});
-	});
+  import "../scripts/proyectos";
 </script>

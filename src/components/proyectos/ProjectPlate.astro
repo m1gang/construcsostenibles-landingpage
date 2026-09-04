@@ -1,0 +1,37 @@
+---
+import type { Project } from "../../data/proyectos";
+
+interface Props {
+  project: Project;
+}
+
+const { project: p } = Astro.props;
+---
+
+<article class="plate" data-tilt>
+  <div class="plate-visual">
+    <svg viewBox="0 0 400 280" fill="none" aria-hidden="true" class="plate-svg">
+      <defs>
+        <pattern id={`pg-${p.id}`} width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M 16 0 L 0 0 0 16" fill="none" stroke="var(--grid)" stroke-width="0.4" />
+        </pattern>
+      </defs>
+      <rect width="400" height="280" fill={`url(#pg-${p.id})`} />
+      <rect x="80" y="100" width="240" height="160" fill="none" stroke="var(--line)" stroke-width="1" />
+      <rect x="110" y="130" width="60" height="80" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
+      <rect x="230" y="130" width="60" height="80" fill="none" stroke="var(--ink-3)" stroke-width="0.8" stroke-dasharray="3 2" />
+      <line x1="80" y1="100" x2="200" y2="55" stroke="var(--ink-3)" stroke-width="0.8" />
+      <line x1="200" y1="55" x2="320" y2="100" stroke="var(--ink-3)" stroke-width="0.8" />
+      <text x="200" y="148" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="var(--ink-3)" opacity="0.4" transform="rotate(-12 200 148)">ESPACIO RESERVADO</text>
+    </svg>
+    <span class="plate-tag tag">LAMINA N {p.id}</span>
+    <div class="plate-overlay">
+      <span class="tag">Ver detalle</span>
+    </div>
+  </div>
+  <div class="plate-info">
+    <h3 class="plate-title">{p.title}</h3>
+    <span class="plate-type">{p.type}</span>
+    <span class="plate-note tag">Fotografia de obra – por incorporar</span>
+  </div>
+</article>

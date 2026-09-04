@@ -1,0 +1,27 @@
+---
+import { siteContact } from "../../data/site";
+---
+
+<div class="contact-info">
+  <h2 class="contact-title">Cotiza tus planos firmados</h2>
+  <p class="contact-sub">
+    Escríbenos por WhatsApp. Atendemos lun–vie a nivel nacional.
+  </p>
+
+  <dl class="contact-data">
+    <div class="data-row">
+      <dt class="tag">Teléfono</dt>
+      <dd><a href={siteContact.tel}>{siteContact.phoneDisplay}</a></dd>
+    </div>
+    <div class="data-row">
+      <dt class="tag">Correo</dt>
+      <dd>
+        <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
+      </dd>
+    </div>
+    <div class="data-row">
+      <dt class="tag">Oficina</dt>
+      <dd>{siteContact.address}</dd>
+    </div>
+  </dl>
+</div>

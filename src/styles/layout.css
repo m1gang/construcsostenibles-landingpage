@@ -1,0 +1,231 @@
+/* Estilos globales del layout: tokens, base, rótulos y toasts.
+   Antes: <style is:global> en Layout.astro */
+
+:root {
+  --paper: #f5f2ea;
+  --sheet: #fbf9f3;
+  --ink: #20251f;
+  --ink-2: #4d554b;
+  --ink-3: #6f7769;
+  --line: #c9c2b0;
+  --line-soft: #ddd6c5;
+  --grid: rgba(32, 37, 31, 0.055);
+  --grid-strong: rgba(32, 37, 31, 0.11);
+  --green: #1e8a4c;
+  --green-deep: #146639;
+  --green-wash: rgba(30, 138, 76, 0.09);
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --masthead-h: 68px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  /* malla de replanteo del plano */
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px);
+  background-size:
+    28px 28px,
+    28px 28px,
+    140px 140px,
+    140px 140px;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--sheet);
+}
+
+:focus-visible {
+  outline: 2px dashed var(--green-deep);
+  outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: 1px solid var(--line);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-3);
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green-deep);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* Rótulo de cajetín: versalitas mono de levantamiento */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Filete de sección con rótulo centrado, como eje de corte */
+.rule-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.rule-label::before,
+.rule-label::after {
+  content: "";
+  height: 1px;
+  background: var(--ink);
+}
+
+.rule-label::before {
+  width: clamp(1.5rem, 4vw, 3rem);
+}
+
+.rule-label::after {
+  flex: 1;
+}
+
+.rule-label .tag {
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Toast notifications - estilo técnico de plano */
+.toast-container {
+  position: fixed !important;
+  top: 100px !important;
+  right: 20px !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  pointer-events: none !important;
+}
+
+.toast {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 16px 20px !important;
+  background: var(--sheet) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 4px 4px 0 var(--line-soft) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  opacity: 0 !important;
+  transform: translateX(50px) !important;
+  transition:
+    opacity 400ms var(--ease-out-expo),
+    transform 400ms var(--ease-out-expo) !important;
+  max-width: 380px !important;
+  pointer-events: auto !important;
+  position: relative !important;
+}
+
+.toast::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 4px !important;
+  height: 100% !important;
+}
+
+.toast-success::before {
+  background: var(--green) !important;
+}
+
+.toast-error::before {
+  background: #b3261e !important;
+}
+
+.toast-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.toast-icon {
+  flex-shrink: 0 !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 2px !important;
+}
+
+.toast-success .toast-icon {
+  color: var(--green) !important;
+}
+
+.toast-error .toast-icon {
+  color: #b3261e !important;
+}
+
+.toast-message {
+  flex: 1 !important;
+  color: var(--ink) !important;
+}
+
+.toast-message strong {
+  display: block !important;
+  font-weight: 600 !important;
+  margin-bottom: 4px !important;
+  color: var(--ink) !important;
+}
+
+@media (max-width: 48rem) {
+  .toast-container {
+    top: auto !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    left: 20px !important;
+  }
+
+  .toast {
+    max-width: 100% !important;
+  }
+}

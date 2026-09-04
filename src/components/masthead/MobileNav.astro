@@ -1,0 +1,33 @@
+---
+import { navLinks, siteContact } from "../../data/site";
+
+interface Props {
+  phone?: string;
+}
+
+const { phone = siteContact.phoneShort } = Astro.props;
+---
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav-head">
+    <span class="tag">ÍNDICE DE LÁMINA</span>
+    <button class="mobile-close" id="navClose" aria-label="Cerrar menú">
+      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1 L13 13 M13 1 L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Navegación móvil">
+    {navLinks.map((l, i) => (
+      <a href={l.href} class="mobile-link" style={`--i:${i}`}>
+        <span class="ml-num">0{i + 1}</span>
+        <span class="ml-label">{l.label}</span>
+        <span class="ml-arrow" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </nav>
+  <div class="mobile-nav-foot">
+    <a href={siteContact.waLink} target="_blank" rel="noopener" class="mobile-phone">
+      <span aria-hidden="true">●</span> WhatsApp {phone} ↗
+    </a>
+    <span class="tag">SMP · LIMA · PERÚ</span>
+  </div>
+</div>
