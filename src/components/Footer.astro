@@ -1,13 +1,100 @@
 ---
 import "../styles/footer.css";
-import { siteContact } from "../data/site";
-import { footerBrand } from "../data/footer";
+import { siteContact, navLinks } from "../data/site";
+
+const year = new Date().getFullYear();
+
+const serviciosDestacados = [
+  "Planos sismorresistentes",
+  "Licencia de construcción",
+  "Instalaciones eléctricas y sanitarias",
+  "ITSE / Defensa Civil",
+  "Saneamiento legal — SUNARP",
+];
 ---
 
 <footer class="footer">
   <div class="footer-inner">
-    <span class="footer-brand">{footerBrand}</span>
-    <span class="footer-addr">{siteContact.address}</span>
-    <span class="footer-id">{siteContact.email} · {siteContact.phoneShort}</span>
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="#inicio" class="footer-logo" aria-label="Construcciones Sostenibles — inicio">
+          <img
+            src="/logotipo-light.svg"
+            alt="Construcciones Sostenibles"
+            width="220"
+            height="74"
+            loading="lazy"
+          />
+        </a>
+        <p class="footer-desc">
+          Planos de obra firmados por ingenieros colegiados. Licencias,
+          estructuras sismorresistentes, ITSE y saneamiento legal a nivel nacional.
+        </p>
+        <a
+          class="footer-cta"
+          href={siteContact.waLink}
+          target="_blank"
+          rel="noopener"
+        >
+          Cotizar por WhatsApp ↗
+        </a>
+      </div>
+
+      <nav class="footer-col" aria-label="Secciones del sitio">
+        <h3 class="footer-title">Explora</h3>
+        <ul class="footer-list">
+          {navLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Servicios</h3>
+        <ul class="footer-list">
+          {serviciosDestacados.map((s) => (
+            <li><a href="#servicios">{s}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact">
+          <li>{siteContact.address}</li>
+          <li>
+            <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
+          </li>
+          <li>
+            <a href={siteContact.tel}>{siteContact.phoneDisplay}</a>
+          </li>
+          <li class="footer-meta">SMP · Lima · Perú</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">
+        © {year} Construcciones Sostenibles · Todos los derechos reservados
+      </span>
+      <span class="footer-dev">
+        Desarrollado por
+        <a
+          href="https://m1gang.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="MiGang — abrir portafolio en una pestaña nueva"
+          
+        >
+          <img
+            src="/logo-migang-light.svg"
+            alt="MiGang"
+            width="120"
+            height="22"
+            loading="lazy"
+          />
+        </a>
+      </span>
+    </div>
   </div>
 </footer>

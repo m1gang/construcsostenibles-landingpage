@@ -28,9 +28,11 @@
   text-decoration: none;
 }
 
-.brand img {
-  width: 42px;
-  height: 42px;
+.brand img,
+.brand-logo {
+  width: auto;
+  height: 40px;
+  max-width: 200px;
   object-fit: contain;
 }
 
