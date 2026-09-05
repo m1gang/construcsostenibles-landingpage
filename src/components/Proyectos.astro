@@ -4,7 +4,7 @@ import { projects } from "../data/proyectos";
 import ProjectPlate from "./proyectos/ProjectPlate.astro";
 ---
 
-<section class="proyectos" id="proyectos">
+<section class="proyectos section" id="proyectos">
   <div class="container">
     <div class="rule-label">
       <span class="tag">
@@ -18,7 +18,7 @@ import ProjectPlate from "./proyectos/ProjectPlate.astro";
       <p class="section-sub">Una muestra de licencias, saneamientos y proyectos gestionados en Lima y provincias. Tus fotos finales irán aquí.</p>
     </div>
 
-    <div class="plates">
+    <div class="grid grid-cols-[repeat(2,1fr)] gap-[clamp(1rem,2vw,1.5rem)] max-[48rem]:grid-cols-1">
       {projects.map((p) => <ProjectPlate project={p} />)}
     </div>
   </div>

@@ -4,7 +4,7 @@ import { team } from "../data/equipo";
 import TeamStamp from "./equipo/TeamStamp.astro";
 ---
 
-<section class="equipo" id="equipo">
+<section class="equipo section" id="equipo">
   <div class="container">
     <div class="rule-label">
       <span class="tag">
@@ -13,12 +13,12 @@ import TeamStamp from "./equipo/TeamStamp.astro";
       </span>
     </div>
 
-    <div class="equipo-head">
-      <h2 class="equipo-title">Profesionales colegiados que firman tu expediente</h2>
-      <p class="equipo-sub">Arquitectura, estructuras, eléctricas y sanitarias. Cada plano lleva sello, número de colegiatura y firma responsable.</p>
+    <div class="section-head">
+      <h2 class="section-title">Profesionales colegiados que firman tu expediente</h2>
+      <p class="section-sub">Arquitectura, estructuras, eléctricas y sanitarias. Cada plano lleva sello, número de colegiatura y firma responsable.</p>
     </div>
 
-    <div class="team-grid">
+    <div class="grid grid-cols-[repeat(4,1fr)] gap-[clamp(1rem,2vw,1.5rem)] max-[54rem]:grid-cols-[repeat(2,1fr)] max-[30rem]:grid-cols-1">
       {team.map((m) => <TeamStamp member={m} />)}
     </div>
   </div>

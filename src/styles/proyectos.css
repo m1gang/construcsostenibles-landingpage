@@ -1,45 +1,11 @@
 .proyectos {
-  padding: clamp(3rem, 8vw, 6rem) 0;
   background: var(--sheet);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
-.proyectos .container {
-  max-width: 76rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2.5rem);
-}
-
 .proyectos .rule-label {
   margin-bottom: clamp(1.2rem, 3vw, 2rem);
-}
-
-.proyectos .section-head {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  max-width: 38rem;
-}
-
-.proyectos .section-title {
-  font-stretch: 112%;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.7rem;
-}
-
-.proyectos .section-sub {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-.proyectos .plates {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .proyectos .plate {
@@ -130,6 +96,3 @@
   opacity: 0.7;
 }
 
-@media (max-width: 48rem) {
-  .proyectos .plates { grid-template-columns: 1fr; }
-}

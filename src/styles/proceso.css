@@ -1,42 +1,5 @@
-.proceso {
-  padding: clamp(3rem, 8vw, 6rem) 0;
-}
-
-.proceso .container {
-  max-width: 76rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2.5rem);
-}
-
 .proceso .rule-label {
   margin-bottom: clamp(1.2rem, 3vw, 2rem);
-}
-
-.proceso .section-head {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  max-width: 38rem;
-}
-
-.proceso .section-title {
-  font-stretch: 112%;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.7rem;
-}
-
-.proceso .section-sub {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 2vw, 2rem);
 }
 
 .step {
@@ -90,18 +53,9 @@
     width: 2rem;
     overflow: visible;
   }
-
-  .steps {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 
 @media (max-width: 48rem) {
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
   .step {
     border-bottom: none;
   }

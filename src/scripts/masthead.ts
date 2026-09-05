@@ -2,6 +2,25 @@
 const toggle = document.getElementById("navToggle");
 const panel = document.getElementById("mobileNav");
 const closeBtn = document.getElementById("navClose");
+const header = document.querySelector(".masthead");
+
+/** Header compacto al hacer scroll: encoge logo, nav y botón de WhatsApp. */
+const SCROLL_THRESHOLD = 40;
+let ticking = false;
+function updateScrolled() {
+  ticking = false;
+  const scrolled = window.scrollY > SCROLL_THRESHOLD;
+  header?.classList.toggle("scrolled", scrolled);
+  document.documentElement.classList.toggle("scrolled", scrolled);
+}
+function onScroll() {
+  if (!ticking) {
+    ticking = true;
+    requestAnimationFrame(updateScrolled);
+  }
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+updateScrolled();
 
 function setMenu(open: boolean) {
   if (!toggle || !panel) return;

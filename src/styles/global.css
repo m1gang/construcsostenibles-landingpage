@@ -1,5 +1,42 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Tokens Tailwind v4 — generan utilidades (bg-paper, text-ink, font-mono...).
+   Los valores están DUPLICADOS como literales en :root (legacy) a propósito:
+   cero referencias var() cruzadas para que ningún token pueda invalidarse. */
+
+@theme {
+  --color-paper: #f5f2ea;
+  --color-sheet: #fbf9f3;
+  --color-ink: #20251f;
+  --color-ink-2: #4d554b;
+  --color-ink-3: #6f7769;
+  --color-line: #c9c2b0;
+  --color-line-soft: #ddd6c5;
+  --color-green: #1e8a4c;
+  --color-green-deep: #146639;
+  --color-green-bright: #00a859;
+  --color-green-wash: rgba(30, 138, 76, 0.09);
+  --color-night: #07130d;
+  --color-moss: #0b2117;
+  --color-moss-2: #0e2f20;
+  --color-mint: #e9f1ec;
+  --color-mint-dim: #7ddba3;
+  --color-error: #b3261e;
+
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shadow-hard: 3px 3px 0 #20251f;
+  --shadow-paper: 4px 4px 0 #ddd6c5;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --breakpoint-md: 48rem;
+}
+
 /* Estilos globales del layout: tokens, base, rótulos y toasts.
-   Antes: <style is:global> en Layout.astro */
+   Antes: src/styles/layout.css (contenido idéntico, solo cambió el archivo). */
 
 :root {
   --paper: #f5f2ea;
@@ -17,7 +54,8 @@
   --font-body: "Archivo", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --masthead-h: 68px;
+  --masthead-h: 96px;
+  --masthead-h-sm: 64px;
 }
 
 * {
@@ -215,6 +253,39 @@ a {
   font-weight: 600 !important;
   margin-bottom: 4px !important;
   color: var(--ink) !important;
+}
+
+/* --- Sistema compartido: bloques byte-idénticos extraídos de 7 componentes.
+   Los .css de cada sección ya no los definen; vienen de aquí. --- */
+.container {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.section {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.section-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 38rem;
+}
+
+.section-title {
+  font-stretch: 112%;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.7rem;
+}
+
+.section-sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
 }
 
 @media (max-width: 48rem) {

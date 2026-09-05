@@ -6,9 +6,9 @@ const items = cintaItems;
 ---
 
 <div class="cinta" aria-hidden="true">
-  <div class="cinta-track">
+  <div class="cinta-track flex gap-10 w-max">
     {[...items, ...items].map((item, i) => (
-      <span class="cinta-item">
+      <span class="cinta-item flex items-center gap-10 font-mono text-[0.78rem] font-medium tracking-[0.1em] uppercase text-ink-2 whitespace-nowrap">
         {item}
         {((i + 1) % items.length !== 0) && <svg class="cinta-dot" width="6" height="6" viewBox="0 0 6 6"><rect x="1" y="1" width="4" height="4" fill="var(--green)" /></svg>}
       </span>

@@ -1,12 +1,19 @@
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: calc(100svh - var(--masthead-h));
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(5.5rem, 12vw, 8rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem);
   overflow: hidden;
   box-sizing: border-box;
+  transition:
+    height 300ms var(--ease-out-expo),
+    min-height 300ms var(--ease-out-expo);
+}
+
+html.scrolled .hero {
+  min-height: calc(100svh - var(--masthead-h-sm));
 }
 
 @media (min-width: 54.01rem) {
@@ -17,6 +24,11 @@
     max-height: none;
     padding-top: clamp(1rem, 3vh, 2rem);
     padding-bottom: clamp(1rem, 3vh, 2rem);
+  }
+
+  html.scrolled .hero {
+    height: calc(100vh - var(--masthead-h-sm));
+    height: calc(100svh - var(--masthead-h-sm));
   }
 
   .hero-grid {
@@ -306,6 +318,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero { transition: none; }
   .hl { clip-path: inset(0 0 0 0); animation: none; }
   .contour { stroke-dashoffset: 0; animation: none; }
 }

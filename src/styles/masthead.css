@@ -7,6 +7,11 @@
   z-index: 60;
   height: var(--masthead-h);
   flex-shrink: 0;
+  transition: height 300ms var(--ease-out-expo);
+}
+
+html.scrolled .masthead {
+  height: var(--masthead-h-sm);
 }
 
 .masthead-inner {
@@ -18,6 +23,11 @@
   align-items: stretch;
   gap: clamp(1rem, 3vw, 2.5rem);
   height: var(--masthead-h);
+  transition: height 300ms var(--ease-out-expo);
+}
+
+html.scrolled .masthead-inner {
+  height: var(--masthead-h-sm);
 }
 
 .brand {
@@ -26,14 +36,58 @@
   gap: 0.75rem;
   padding: 0.7rem 0;
   text-decoration: none;
+  transition: padding 300ms var(--ease-out-expo);
+}
+
+html.scrolled .brand {
+  padding: 0.35rem 0;
+}
+
+.brand-swap {
+  display: grid;
+  align-items: center;
 }
 
 .brand img,
 .brand-logo {
   width: auto;
-  height: 40px;
-  max-width: 200px;
   object-fit: contain;
+}
+
+.brand-logo-full {
+  grid-area: 1 / 1;
+  height: 58px;
+  max-width: 260px;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 250ms var(--ease-out-expo),
+    transform 300ms var(--ease-out-expo);
+}
+
+.brand-logo-mini {
+  grid-area: 1 / 1;
+  justify-self: start;
+  height: 38px;
+  width: auto;
+  max-width: 38px;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition:
+    opacity 250ms var(--ease-out-expo),
+    transform 300ms var(--ease-out-expo);
+}
+
+html.scrolled .brand-logo-full {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+html.scrolled .brand-logo-mini {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .brand-name {
@@ -72,7 +126,7 @@
 }
 
 .masthead .nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -137,6 +191,9 @@
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.4);
+  transition:
+    width 300ms var(--ease-out-expo),
+    height 300ms var(--ease-out-expo);
 }
 
 .wa-icon {
@@ -204,6 +261,26 @@
   transform: translate(2px, -2px);
 }
 
+/* ---- header compacto al hacer scroll ---- */
+html.scrolled .phone {
+  gap: 0.5rem;
+  padding: 0.3rem 0.55rem 0.3rem 0.3rem;
+}
+
+html.scrolled .wa-badge {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+html.scrolled .phone-tag,
+html.scrolled .phone-arrow {
+  display: none;
+}
+
+html.scrolled .phone-num {
+  font-size: 0.85rem;
+}
+
 /* ---- hamburguesa ---- */
 .hamburger {
   display: none;
@@ -223,16 +300,18 @@
   display: block;
   height: 1.5px;
   background: var(--ink);
-  transition: transform 250ms var(--ease-out-expo), opacity 200ms;
+  transition:
+    transform 250ms var(--ease-out-expo),
+    opacity 200ms;
 }
 
-.hamburger[aria-expanded='true'] span:nth-child(1) {
+.hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
-.hamburger[aria-expanded='true'] span:nth-child(2) {
+.hamburger[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
-.hamburger[aria-expanded='true'] span:nth-child(3) {
+.hamburger[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
@@ -247,7 +326,11 @@
     linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
     linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px);
-  background-size: 28px 28px, 28px 28px, 140px 140px, 140px 140px;
+  background-size:
+    28px 28px,
+    28px 28px,
+    140px 140px,
+    140px 140px;
   display: flex;
   flex-direction: column;
   padding: 1.2rem;
@@ -369,6 +452,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .masthead,
+  .masthead-inner,
+  .brand,
+  .brand-logo-full,
+  .brand-logo-mini,
+  .wa-badge {
+    transition: none;
+  }
+  html.scrolled .brand-logo-full {
+    transform: none;
+  }
+  html.scrolled .brand-logo-mini {
+    transform: none;
+  }
   .mobile-nav {
     transition: none;
   }

@@ -4,7 +4,7 @@ import { steps } from "../data/proceso";
 import ProcessStep from "./proceso/ProcessStep.astro";
 ---
 
-<section class="proceso" id="proceso">
+<section class="proceso section" id="proceso">
   <div class="container">
     <div class="rule-label">
       <span class="tag">
@@ -18,7 +18,7 @@ import ProcessStep from "./proceso/ProcessStep.astro";
       <p class="section-sub">Sabrás qué recibes en cada etapa antes de avanzar. Todo queda por escrito en el contrato, sin letras pequeñas.</p>
     </div>
 
-    <div class="steps">
+    <div class="steps grid grid-cols-[repeat(3,1fr)] gap-[clamp(1rem,2vw,2rem)] max-[48rem]:grid-cols-1 max-[48rem]:gap-0">
       {steps.map((s, i) => (
         <ProcessStep step={s} showConnector={i < steps.length - 1} />
       ))}

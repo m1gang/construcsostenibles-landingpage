@@ -1,45 +1,11 @@
 .equipo {
-  padding: clamp(3rem, 8vw, 6rem) 0;
   background: var(--sheet);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
-.equipo .container {
-  max-width: 76rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2.5rem);
-}
-
 .equipo .rule-label {
   margin-bottom: clamp(1.2rem, 3vw, 2rem);
-}
-
-.equipo-head {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  max-width: 38rem;
-}
-
-.equipo-title {
-  font-stretch: 112%;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.7rem;
-}
-
-.equipo-sub {
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .stamp {
@@ -172,10 +138,3 @@
   height: 18px;
 }
 
-@media (max-width: 54rem) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 30rem) {
-  .team-grid { grid-template-columns: 1fr; }
-}
