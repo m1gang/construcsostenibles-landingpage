@@ -3,7 +3,7 @@ import { siteContact } from "../../data/site";
 import { services } from "../../data/contacto";
 ---
 
-<span class="tag form-head">Solicitud de cotización</span>
+<span class="tag form-head">Escríbenos</span>
 <form
   id="contactForm"
   class="contact-form"
@@ -53,10 +53,10 @@ import { services } from "../../data/contacto";
   </div>
   <div class="field">
     <label class="tag" for="f-mensaje">Detalle del proyecto</label>
-    <textarea
-      id="f-mensaje"
-      name="mensaje"
-      rows="4"
+      <textarea
+        id="f-mensaje"
+        name="mensaje"
+        rows="3"
       placeholder="Ej.: Necesito planos firmados para licencia de construcción de una vivienda de 2 pisos…"
       required
       minlength="10"
@@ -87,7 +87,7 @@ import { services } from "../../data/contacto";
         stroke="currentColor"
         stroke-width="1.4"></path>
     </svg>
-    <span id="formSubmitLabel">Enviar solicitud</span>
+    <span id="formSubmitLabel">Enviar mensaje</span>
   </button>
 </form>
 <div class="form-alt">

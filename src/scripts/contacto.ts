@@ -73,7 +73,7 @@ function setLoading(loading: boolean): void {
     submitBtn.classList.toggle("is-loading", loading);
   }
   if (submitLabel) {
-    submitLabel.textContent = loading ? "Enviando..." : "Enviar solicitud";
+    submitLabel.textContent = loading ? "Enviando..." : "Enviar mensaje";
   }
 }
 

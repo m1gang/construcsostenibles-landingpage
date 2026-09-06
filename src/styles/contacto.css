@@ -1,8 +1,8 @@
 .contacto .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: stretch;
 }
 
 .contacto .rule-label {
@@ -40,21 +40,42 @@
 
 .data-row {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 1rem;
-  align-items: baseline;
-  padding: 0.9rem 0;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--line-soft);
 }
 
+.data-ico {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.1rem;
+  color: var(--green-deep);
+  background: var(--green-wash);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.data-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
 .data-row dt {
-  padding-top: 0.15rem;
+  padding-top: 0;
+  font-size: 0.62rem;
 }
 
 .data-row dd {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .data-row dd a {
@@ -70,34 +91,35 @@
   width: 100%;
   background: var(--sheet);
   border: 1px solid var(--line);
-  padding: clamp(1.6rem, 3vw, 2.5rem);
+  padding: clamp(1.1rem, 2vw, 1.5rem);
   box-shadow: 4px 4px 0 var(--line-soft);
+  align-self: start;
 }
 
 .form-head {
   display: block;
   color: var(--green-deep);
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid var(--line);
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
+  gap: 0.8rem;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.15rem;
+  gap: 0.8rem;
 }
 
 .contacto .field {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 .field-hint {
@@ -109,12 +131,12 @@
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  padding: 0.85rem 0.9rem;
+  padding: 0.65rem 0.8rem;
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   border-radius: 0;
   transition: border-color 200ms var(--ease-out-expo);
@@ -122,7 +144,7 @@
 
 .contact-form textarea {
   resize: vertical;
-  min-height: 7rem;
+  min-height: 4.5rem;
   line-height: 1.6;
 }
 
@@ -165,7 +187,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 1rem;
+  padding: 0.8rem;
   background: var(--green);
   color: var(--sheet);
   border: none;
@@ -208,9 +230,9 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.7rem;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--line-soft);
   font-size: 0.85rem;
 }
@@ -232,7 +254,7 @@
   gap: 0.6rem;
   background: var(--green);
   color: var(--sheet);
-  padding: 0.85rem 1rem;
+  padding: 0.7rem 1rem;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 700;
@@ -247,6 +269,124 @@
   text-decoration: none;
 }
 
+.contacto .contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  min-width: 0;
+}
+
+.contacto .contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  min-width: 0;
+}
+
+/* Mapa amplio con foto del local flotando */
+.visit-map {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 22rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--line-soft);
+  overflow: hidden;
+}
+
+.visit-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.visit-float {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 8rem;
+  margin: 0;
+  background: var(--sheet);
+  border: 1px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.visit-float img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+}
+
+.visit-float figcaption {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.6rem;
+}
+
+.visit-kicker {
+  margin: 0.25rem 0 -0.5rem;
+}
+
+.visit-go {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--sheet);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--line);
+  transition:
+    background 200ms var(--ease-out-expo),
+    transform 150ms var(--ease-out-expo),
+    box-shadow 150ms var(--ease-out-expo);
+}
+
+.visit-go:hover {
+  background: var(--green-deep);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+/* Columna derecha: formulario + datos compactos debajo */
+.contact-main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  min-width: 0;
+}
+
+/* Datos compactos bajo el formulario */
+.contact-below {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 1rem;
+}
+
+.contact-below .contact-data {
+  display: grid;
+  gap: 0;
+}
+
 @media (max-width: 48rem) {
   .contacto .contact-grid {
     grid-template-columns: 1fr;
@@ -259,11 +399,21 @@
   }
 
   .data-row {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0.6rem;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .visit-map {
+    min-height: 20rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visit-float {
+    animation: none;
   }
 }

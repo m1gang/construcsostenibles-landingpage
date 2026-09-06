@@ -46,8 +46,8 @@ export const categories: ServicioCategory[] = [
     items: [
       { code: "D-01", name: "Obra domestica con paneles solares", desc: "Camaras, alarmas, alertas en tiempo real, energia limpia" },
       { code: "D-02", name: "Instalacion pozo a tierra", desc: "Materiales, excavacion, conexion, certificacion" },
-      { code: "D-03", name: "Servicio de firmas", desc: "8 especialidades: civil, electrico, sanitario, arquitecto, mecanico" },
-      { code: "D-04", name: "Ploteos A0-A3", desc: "Impresion, copia y escaneo con envio a provincia" },
+      { code: "D-03", name: "Servicio de firmas", desc: "8 especialidades + verificador común: civil, eléctrico, sanitario, arquitecto" },
+      { code: "D-04", name: "Ploteos A0-A3", desc: "Impresión, copia y escaneo A3, A2, A1, A0 + delivery en todo Lima" },
     ],
   },
 ];

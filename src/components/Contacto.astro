@@ -1,7 +1,9 @@
 ---
 import "../styles/contacto.css";
 import ContactInfo from "./contacto/ContactInfo.astro";
+import ContactData from "./contacto/ContactData.astro";
 import ContactForm from "./contacto/ContactForm.astro";
+import VisitMap from "./contacto/VisitMap.astro";
 ---
 
 <section class="contacto section" id="contacto">
@@ -34,10 +36,20 @@ import ContactForm from "./contacto/ContactForm.astro";
     </div>
 
     <div class="contact-grid">
-      <ContactInfo />
+      <div class="contact-side">
+        <ContactInfo />
+        <p class="tag visit-kicker">Encuéntranos — te esperamos en el local</p>
+        <VisitMap />
+      </div>
 
-      <div class="contact-form-card">
-        <ContactForm />
+      <div class="contact-main">
+        <div class="contact-form-card">
+          <ContactForm />
+        </div>
+
+        <div class="contact-below">
+          <ContactData />
+        </div>
       </div>
     </div>
   </div>
