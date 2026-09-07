@@ -1,10 +1,10 @@
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--masthead-h));
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(5.5rem, 12vw, 8rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem);
+  padding: calc(var(--masthead-h) + clamp(2rem, 5vw, 4rem)) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem);
   overflow: hidden;
   box-sizing: border-box;
   transition:
@@ -12,23 +12,13 @@
     min-height 300ms var(--ease-out-expo);
 }
 
-html.scrolled .hero {
-  min-height: calc(100svh - var(--masthead-h-sm));
-}
-
 @media (min-width: 54.01rem) {
   .hero {
-    height: calc(100vh - var(--masthead-h));
-    height: calc(100svh - var(--masthead-h));
+    height: 100svh;
     min-height: 540px;
     max-height: none;
-    padding-top: clamp(1rem, 3vh, 2rem);
+    padding-top: calc(var(--masthead-h) + clamp(1rem, 3vh, 2rem));
     padding-bottom: clamp(1rem, 3vh, 2rem);
-  }
-
-  html.scrolled .hero {
-    height: calc(100vh - var(--masthead-h-sm));
-    height: calc(100svh - var(--masthead-h-sm));
   }
 
   .hero-grid {
@@ -387,7 +377,7 @@ html.scrolled .hero {
     height: auto;
     min-height: auto;
     max-height: none;
-    padding-top: clamp(4.5rem, 16vw, 7rem);
+    padding-top: calc(var(--masthead-h) + clamp(1.5rem, 6vw, 3rem));
     padding-bottom: clamp(3rem, 8vw, 5rem);
   }
 

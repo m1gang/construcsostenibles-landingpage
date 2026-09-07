@@ -4,7 +4,7 @@ export interface HeroMetric {
 }
 
 export const heroMetrics: HeroMetric[] = [
-  { tag: "Equipo", value: "4 profesionales" },
+  { tag: "Equipo", value: "6 profesionales" },
   { tag: "Firmas", value: "CAP + CIP" },
   { tag: "Sede", value: "Lima, Perú" },
 ];

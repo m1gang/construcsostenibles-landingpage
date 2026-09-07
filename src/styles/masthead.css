@@ -1,17 +1,26 @@
+/* ── Masthead: dark default → light on scroll ── */
+
 .masthead {
-  border-bottom: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--sheet) 88%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(13, 15, 14, 0.85);
   backdrop-filter: blur(6px);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 60;
   height: var(--masthead-h);
   flex-shrink: 0;
-  transition: height 300ms var(--ease-out-expo);
+  transition:
+    height 300ms var(--ease-out-expo),
+    background 300ms var(--ease-out-expo),
+    border-color 300ms var(--ease-out-expo);
 }
 
 html.scrolled .masthead {
   height: var(--masthead-h-sm);
+  background: color-mix(in srgb, var(--sheet) 88%, transparent);
+  border-bottom-color: var(--ink);
 }
 
 .masthead-inner {
@@ -29,6 +38,8 @@ html.scrolled .masthead {
 html.scrolled .masthead-inner {
   height: var(--masthead-h-sm);
 }
+
+/* ── Brand / logos ── */
 
 .brand {
   display: flex;
@@ -54,17 +65,23 @@ html.scrolled .brand {
   object-fit: contain;
 }
 
+/* Full logo */
 .brand-logo-full {
   grid-area: 1 / 1;
   height: 58px;
   max-width: 260px;
-  opacity: 1;
-  transform: scale(1);
   transition:
     opacity 250ms var(--ease-out-expo),
     transform 300ms var(--ease-out-expo);
 }
 
+.brand-logo-full--light { opacity: 1; transform: scale(1); }
+.brand-logo-full--dark  { opacity: 0; transform: scale(0.92); pointer-events: none; position: absolute; }
+
+html.scrolled .brand-logo-full--light { opacity: 0; transform: scale(0.92); pointer-events: none; }
+html.scrolled .brand-logo-full--dark  { opacity: 1; transform: scale(1); position: relative; }
+
+/* Mini logo */
 .brand-logo-mini {
   grid-area: 1 / 1;
   justify-self: start;
@@ -79,16 +96,11 @@ html.scrolled .brand {
     transform 300ms var(--ease-out-expo);
 }
 
-html.scrolled .brand-logo-full {
-  opacity: 0;
-  transform: scale(0.92);
-  pointer-events: none;
-}
+.brand-logo-mini--light { position: absolute; }
+.brand-logo-mini--dark  { position: absolute; }
 
-html.scrolled .brand-logo-mini {
-  opacity: 1;
-  transform: scale(1);
-}
+html.scrolled .brand-logo-mini--light { opacity: 1; transform: scale(1); position: relative; }
+html.scrolled .brand-logo-mini--dark  { opacity: 0; }
 
 .brand-name {
   font-stretch: 112%;
@@ -102,6 +114,8 @@ html.scrolled .brand-logo-mini {
 .brand-name strong {
   font-weight: 800;
 }
+
+/* ── Nav links ── */
 
 .masthead .nav {
   display: flex;
@@ -119,10 +133,15 @@ html.scrolled .brand-logo-mini {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink-2);
-  border-left: 1px solid var(--line-soft);
+  color: rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
-  transition: color 200ms var(--ease-out-expo);
+  transition: color 200ms var(--ease-out-expo), border-color 300ms var(--ease-out-expo);
+}
+
+html.scrolled .masthead .nav a {
+  color: var(--ink-2);
+  border-left-color: var(--line-soft);
 }
 
 .masthead .nav a::after {
@@ -139,16 +158,26 @@ html.scrolled .brand-logo-mini {
 }
 
 .masthead .nav a:last-child {
-  border-right: 1px solid var(--line-soft);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+html.scrolled .masthead .nav a:last-child {
+  border-right-color: var(--line-soft);
 }
 
 .masthead .nav a:hover {
+  color: #4ade80;
+}
+
+html.scrolled .masthead .nav a:hover {
   color: var(--green-deep);
 }
 
 .masthead .nav a:hover::after {
   transform: scaleX(1);
 }
+
+/* ── Phone / WhatsApp button ── */
 
 .phone {
   align-self: center;
@@ -288,21 +317,31 @@ html.scrolled .phone-num {
   justify-content: center;
   gap: 5px;
   background: none;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   width: 44px;
   height: 44px;
   padding: 0 10px;
   cursor: pointer;
   align-self: center;
+  transition: border-color 300ms var(--ease-out-expo);
+}
+
+html.scrolled .hamburger {
+  border-color: var(--line);
 }
 
 .hamburger span {
   display: block;
   height: 1.5px;
-  background: var(--ink);
+  background: #fff;
   transition:
     transform 250ms var(--ease-out-expo),
-    opacity 200ms;
+    opacity 200ms,
+    background 300ms var(--ease-out-expo);
+}
+
+html.scrolled .hamburger span {
+  background: var(--ink);
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(1) {
