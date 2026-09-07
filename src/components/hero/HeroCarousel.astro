@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import { heroSlides } from "../../data/hero";
+import hero1 from "../../assets/heros/hero-1.jpg";
+import hero2 from "../../assets/heros/hero-2.jpg";
+import hero3 from "../../assets/heros/hero-3.png";
+import hero4 from "../../assets/heros/hero-4.jpg";
+import hero5 from "../../assets/heros/hero-5.png";
+
+const heroImages = [hero1, hero2, hero3, hero4, hero5];
+---
+
+<div
+  class="carousel"
+  id="heroCarousel"
+  role="region"
+  aria-roledescription="carrusel"
+  aria-label="Servicios destacados"
+>
+  <div class="carousel-viewport">
+    {heroSlides.map((s, i) => (
+      <div
+        class="slide"
+        data-slide={i}
+        role="group"
+        aria-roledescription="diapositiva"
+        aria-label={`${i + 1} de ${heroSlides.length}: ${s.tag}`}
+        aria-hidden={i === 0 ? "false" : "true"}
+      >
+        <Image
+          src={heroImages[i]}
+          alt={s.imageAlt ?? s.tag}
+          width={1920}
+          densities={[1, 1.5, 2]}
+          class="slide-img"
+          loading={i === 0 ? "eager" : "lazy"}
+        />
+      </div>
+    ))}
+    <span class="slide-tag" aria-hidden="true">
+      <span data-hero-caption>{heroSlides[0].frame} · {heroSlides[0].tag}</span>
+    </span>
+    <span class="slide-count" aria-hidden="true">
+      <span data-hero-current>01</span> / {String(heroSlides.length).padStart(2, "0")}
+    </span>
+  </div>
+
+  <div class="carousel-dots" role="tablist" aria-label="Elegir servicio">
+    {heroSlides.map((s, i) => (
+      <button
+        type="button"
+        class="dot"
+        data-dot={i}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+        aria-label={`Ver ${s.tag}`}
+      />
+    ))}
+  </div>
+</div>

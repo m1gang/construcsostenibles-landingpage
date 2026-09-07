@@ -1,7 +1,7 @@
 ---
 import "../styles/hero.css";
 import HeroContent from "./hero/HeroContent.astro";
-import HeroPlate from "./hero/HeroPlate.astro";
+import HeroCarousel from "./hero/HeroCarousel.astro";
 ---
 
 <section class="hero" id="hero">
@@ -11,9 +11,10 @@ import HeroPlate from "./hero/HeroPlate.astro";
   <svg class="corner corner-bl" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M0 16 L0 32 L16 32" stroke="var(--ink)" stroke-width="1.2" fill="none"/></svg>
   <svg class="corner corner-br" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 32 L32 32 L32 16" stroke="var(--ink)" stroke-width="1.2" fill="none"/></svg>
 
+  <HeroCarousel />
+
   <div class="hero-grid">
     <HeroContent />
-    <HeroPlate />
   </div>
 </section>
 
