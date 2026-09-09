@@ -49,7 +49,7 @@ export const heroSlides: HeroSlide[] = [
     frame: "S-02",
     tag: "Formalización · SUNARP",
     title: "Independiza y Declara tu Fábrica",
-    accent: "ante SUNARP Sin Observaciones",
+    accent: "ante SUNARP",
     sub: "Elaboramos expedientes técnicos completos de declaratoria de fábrica, reglamentos internos y subdivisión de lotes firmados por Verificador Común. Formaliza el valor real de tu propiedad de manera rápida y segura.",
     cta: "Iniciar Trámite de SUNARP",
   },
