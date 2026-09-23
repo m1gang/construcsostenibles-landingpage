@@ -50,6 +50,10 @@
   --grid-strong: rgba(32, 37, 31, 0.11);
   --green: #1e8a4c;
   --green-deep: #146639;
+  --green-bright: #00a859;
+  --mint: #e9f1ec;
+  --mint-dim: #7ddba3;
+  --night: #07130d;
   --green-wash: rgba(30, 138, 76, 0.09);
   --font-body: "Archivo", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;

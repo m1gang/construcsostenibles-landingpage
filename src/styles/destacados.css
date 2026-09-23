@@ -1,0 +1,280 @@
+/* Expedientes insignia: el flyer domina la tarjeta; el detalle emerge sobre la
+   imagen al hover. Mismo suelo de lámina que el resto de secciones, para que la
+   página no discontinue. Todas las clases llevan prefijo dest-. */
+
+.destacados {
+  background: var(--sheet);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.destacados .rule-label {
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+}
+
+.dest-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.dest-head .section-head {
+  margin-bottom: 0;
+  max-width: 44rem;
+}
+
+.dest-jump {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label icon"
+    "text icon";
+  align-items: center;
+  column-gap: 0.9rem;
+  flex-shrink: 0;
+  border: 1px solid var(--ink);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    border-color 200ms var(--ease-out-expo),
+    background 200ms var(--ease-out-expo),
+    color 200ms var(--ease-out-expo);
+}
+
+.dest-jump .tag {
+  grid-area: label;
+  color: var(--ink-3);
+}
+
+.dest-jump-text {
+  grid-area: text;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dest-jump svg {
+  grid-area: icon;
+  color: var(--green-deep);
+}
+
+.dest-jump:hover {
+  border-color: var(--green);
+  background: var(--green-wash);
+}
+
+/* Tres láminas por fila */
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.dest-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* La lámina manda: marco de 1px como las placas de proyectos, ratio 4:5
+   idéntico para los siete flyers */
+.dest-media {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  aspect-ratio: 4 / 5;
+  transition:
+    border-color 220ms var(--ease-out-expo),
+    box-shadow 220ms var(--ease-out-expo),
+    transform 220ms var(--ease-out-expo);
+}
+
+.dest-flyer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: saturate(1.12) contrast(1.04);
+  transition: transform 420ms var(--ease-out-expo);
+}
+
+/* Detalle + WhatsApp sobre la imagen, solo al hover o al foco */
+.dest-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+  background: linear-gradient(
+    to top,
+    rgba(7, 19, 13, 0.97) 0%,
+    rgba(7, 19, 13, 0.94) 70%,
+    rgba(7, 19, 13, 0.88) 100%
+  );
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 260ms var(--ease-out-expo),
+    transform 260ms var(--ease-out-expo);
+}
+
+/* Desvanecido hacia la imagen, para que el panel no corte en seco */
+.dest-overlay::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 7rem;
+  background: linear-gradient(to top, rgba(7, 19, 13, 0.82), transparent);
+  pointer-events: none;
+}
+
+.dest-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+}
+
+.dest-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--sheet);
+  max-width: 46ch;
+}
+
+.dest-meta {
+  color: var(--mint-dim);
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+.dest-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.2rem;
+  padding: 0.75rem 1.2rem;
+  background: var(--green-bright);
+  color: var(--night);
+  border: 1px solid var(--green-bright);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 200ms var(--ease-out-expo),
+    color 200ms var(--ease-out-expo);
+}
+
+.dest-wa:hover {
+  background: var(--sheet);
+  border-color: var(--sheet);
+  color: var(--night);
+}
+
+/* Sombra y lift al hover; el foco de teclado abre el mismo estado */
+.dest-card:hover .dest-media,
+.dest-card:focus-within .dest-media {
+  border-color: var(--green);
+  box-shadow: 0 14px 34px rgba(30, 138, 76, 0.2);
+  transform: translateY(-4px);
+}
+
+.dest-card:hover .dest-flyer,
+.dest-card:focus-within .dest-flyer {
+  transform: scale(1.04);
+  filter: saturate(1.2) contrast(1.06);
+}
+
+.dest-card:hover .dest-overlay,
+.dest-card:focus-within .dest-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pie de lámina: solo código y título, nada más */
+.dest-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dest-code {
+  color: var(--ink-3);
+}
+
+.dest-title {
+  font-stretch: 112%;
+  font-weight: 600;
+  font-size: 1.08rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+@media (hover: none) {
+  .dest-overlay {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 64rem) {
+  .dest-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dest-jump {
+    width: 100%;
+  }
+}
+
+@media (max-width: 40rem) {
+  .dest-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dest-media,
+  .dest-flyer,
+  .dest-overlay,
+  .dest-jump,
+  .dest-wa {
+    transition: none;
+  }
+
+  .dest-card:hover .dest-media,
+  .dest-card:focus-within .dest-media {
+    transform: none;
+  }
+
+  .dest-card:hover .dest-flyer,
+  .dest-card:focus-within .dest-flyer {
+    transform: none;
+  }
+}
