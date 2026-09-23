@@ -46,9 +46,38 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 },
 );
 
-document
-  .querySelectorAll("section, .stamp, .step, .plate")
-  .forEach((el) => {
-    el.classList.add("reveal");
-    observer.observe(el);
+const revealTargets = document.querySelectorAll(
+  "section, .stamp, .step, .plate",
+);
+
+revealTargets.forEach((el) => {
+  el.classList.add("reveal");
+  observer.observe(el);
+});
+
+function revealInView(): void {
+  for (const el of revealTargets) {
+    if (el.classList.contains("visible")) continue;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+      el.classList.add("visible");
+      observer.unobserve(el);
+    }
+  }
+}
+
+let revealQueued = false;
+function queueReveal(): void {
+  if (revealQueued) return;
+  revealQueued = true;
+  requestAnimationFrame(() => {
+    revealQueued = false;
+    revealInView();
   });
+}
+
+revealInView();
+window.addEventListener("load", revealInView, { once: true });
+window.addEventListener("scroll", queueReveal, { passive: true });
+window.addEventListener("resize", queueReveal, { passive: true });
+window.addEventListener("hashchange", queueReveal);

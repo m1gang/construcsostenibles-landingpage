@@ -52,14 +52,14 @@
 }
 
 /* Reveal */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition:
     opacity 650ms var(--ease-out-expo),
     transform 650ms var(--ease-out-expo);
 }
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -71,7 +71,7 @@
   .progress-fill {
     transition: none;
   }
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;
