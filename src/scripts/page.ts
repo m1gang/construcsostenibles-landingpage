@@ -47,7 +47,7 @@ const observer = new IntersectionObserver(
 );
 
 const revealTargets = document.querySelectorAll(
-  "section, .stamp, .step, .plate",
+  "section, .stamp, .step, .plate, .dest-card",
 );
 
 revealTargets.forEach((el) => {
